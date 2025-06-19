@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAGFlow 기술 스택 및 통합 시스템</title>
+    <title>RAGFlow 실제 기술 스택 및 아키텍처</title>
     
     <!-- SUIT 폰트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
@@ -40,177 +40,188 @@
             width: 100%;
             height: 100%;
             position: relative;
-            padding: 15px 20px 10px 20px;
+            padding: 12px 16px 8px 16px;
             color: white;
             display: flex;
             flex-direction: column;
         }
 
         .page-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-align: center;
             letter-spacing: -0.02em;
         }
 
         .subtitle {
-            font-size: 11px;
+            font-size: 9px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             opacity: 0.9;
         }
 
-        .flow-layout {
+        .stack-layout {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 8px;
-            padding: 15px;
+            padding: 12px;
             color: #1e293b;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            height: 480px;
+            height: 540px;
             overflow: hidden;
-            position: relative;
-        }
-
-        .flow-container {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 15px;
-            height: 100%;
-            position: relative;
+            grid-template-rows: auto 1fr;
+            gap: 8px;
         }
 
-        /* 레이어 라벨 */
-        .layer-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 11px;
-            background: linear-gradient(135deg, #64748b, #475569);
+        .stack-header {
+            background: linear-gradient(90deg, #10b981, #3b82f6);
             color: white;
-            border-radius: 6px;
-            margin-right: 10px;
+            padding: 6px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
         }
 
-        .layer-ui { grid-column: 1; grid-row: 1; }
-        .layer-api { grid-column: 1; grid-row: 2; }
-        .layer-core { grid-column: 1; grid-row: 3; }
-        .layer-data { grid-column: 1; grid-row: 4; }
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 8px;
+            height: 100%;
+        }
 
-        /* 플로우 노드 */
-        .flow-node {
-            background: white;
-            border: 2px solid #e2e8f0;
+        .stack-section {
+            background: #f8fafc;
             border-radius: 8px;
             padding: 8px;
+            border-left: 4px solid;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 9px;
-            font-weight: 600;
-            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .flow-node:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
+        .frontend-stack { border-left-color: #6366f1; }
+        .backend-stack { border-left-color: #10b981; }
+        .database-stack { border-left-color: #f59e0b; }
+        .infrastructure-stack { border-left-color: #ef4444; }
 
-        .node-icon {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .node-title {
-            font-weight: 700;
-            margin-bottom: 3px;
+        .section-title {
             font-size: 9px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-align: center;
+            color: #1e293b;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 4px;
+            margin-bottom: 3px;
+            font-size: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .tech-item:hover {
+            border-color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .tech-icon {
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+
+        .tech-content {
+            flex: 1;
+        }
+
+        .tech-name {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1px;
+            font-size: 7px;
+        }
+
+        .tech-desc {
+            color: #64748b;
+            font-size: 5px;
             line-height: 1.2;
         }
 
-        .node-desc {
-            font-size: 7px;
-            color: #64748b;
-            line-height: 1.3;
-        }
-
-        .node-tech {
-            font-size: 6px;
+        .tech-version {
             color: #059669;
-            margin-top: 2px;
+            font-size: 4px;
             font-weight: 600;
+            margin-top: 1px;
         }
 
         /* 색상 테마 */
-        .ui-node {
+        .frontend-item {
             background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
             border-color: #6366f1;
         }
 
-        .api-node {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            border-color: #3b82f6;
-        }
-
-        .core-node {
+        .backend-item {
             background: linear-gradient(135deg, #d1fae5, #a7f3d0);
             border-color: #10b981;
         }
 
-        .data-node {
-            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
-            border-color: #ec4899;
-        }
-
-        .storage-node {
+        .database-item {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             border-color: #f59e0b;
         }
 
-        .security-node {
+        .infra-item {
             background: linear-gradient(135deg, #fee2e2, #fecaca);
             border-color: #ef4444;
         }
 
-        /* 그리드 위치 */
+        .highlight-item {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-color: #f59e0b;
+            border-width: 2px;
+        }
+
+        .primary-item {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-color: #3b82f6;
+            border-width: 2px;
+        }
+
+        /* 그리드 위치 - 4x4 */
+        .pos-1-1 { grid-column: 1; grid-row: 1; }
         .pos-2-1 { grid-column: 2; grid-row: 1; }
         .pos-3-1 { grid-column: 3; grid-row: 1; }
         .pos-4-1 { grid-column: 4; grid-row: 1; }
-        .pos-5-1 { grid-column: 5; grid-row: 1; }
-        .pos-6-1 { grid-column: 6; grid-row: 1; }
 
+        .pos-1-2 { grid-column: 1; grid-row: 2; }
         .pos-2-2 { grid-column: 2; grid-row: 2; }
         .pos-3-2 { grid-column: 3; grid-row: 2; }
         .pos-4-2 { grid-column: 4; grid-row: 2; }
-        .pos-5-2 { grid-column: 5; grid-row: 2; }
-        .pos-6-2 { grid-column: 6; grid-row: 2; }
 
+        .pos-1-3 { grid-column: 1; grid-row: 3; }
         .pos-2-3 { grid-column: 2; grid-row: 3; }
         .pos-3-3 { grid-column: 3; grid-row: 3; }
         .pos-4-3 { grid-column: 4; grid-row: 3; }
-        .pos-5-3 { grid-column: 5; grid-row: 3; }
-        .pos-6-3 { grid-column: 6; grid-row: 3; }
 
+        .pos-1-4 { grid-column: 1; grid-row: 4; }
         .pos-2-4 { grid-column: 2; grid-row: 4; }
         .pos-3-4 { grid-column: 3; grid-row: 4; }
         .pos-4-4 { grid-column: 4; grid-row: 4; }
-        .pos-5-4 { grid-column: 5; grid-row: 4; }
-        .pos-6-4 { grid-column: 6; grid-row: 4; }
 
         /* 하단 정보 */
         .bottom-info {
             position: absolute;
-            bottom: 10px;
-            left: 20px;
-            right: 20px;
+            bottom: 8px;
+            left: 16px;
+            right: 16px;
             display: flex;
             justify-content: space-between;
             align-items: end;
@@ -218,7 +229,7 @@
         }
 
         .company-info {
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 600;
             opacity: 0.8;
             color: white;
@@ -226,7 +237,7 @@
 
         .page-info {
             text-align: right;
-            font-size: 7px;
+            font-size: 6px;
             opacity: 0.7;
             line-height: 1.3;
             color: white;
@@ -236,159 +247,518 @@
 <body>
     <div class="presentation-container">
         <div class="slide">
-            <h1 class="page-title">RAGFlow 기술 스택 및 통합 시스템</h1>
-            <div class="subtitle">엔터프라이즈급 RAG 시스템의 완전한 기술 아키텍처와 각 레이어별 구성 요소</div>
+            <h1 class="page-title">RAGFlow 실제 기술 스택 및 아키텍처</h1>
+            <div class="subtitle">Docker Compose 기반 마이크로서비스 아키텍처와 실제 검증된 오픈소스 기술 스택</div>
             
-            <div class="flow-layout">
-                <div class="flow-container">
-                    <!-- 레이어 라벨 -->
-                    <div class="layer-label layer-ui">사용자 인터페이스</div>
-                    <div class="layer-label layer-api">API 및 게이트웨이</div>
-                    <div class="layer-label layer-core">핵심 엔진</div>
-                    <div class="layer-label layer-data">데이터 레이어</div>
+            <div class="stack-layout">
+                <div class="stack-header">
+                    🏗️ 실제 RAGFlow 기술 스택 (GitHub: 56.9K ⭐) - 검증된 오픈소스 아키텍처
+                </div>
 
-                    <!-- 사용자 인터페이스 (Row 1) -->
-                    <div class="flow-node ui-node pos-2-1">
-                        <div class="node-icon">🖥️</div>
-                        <div class="node-title">웹 인터페이스</div>
-                        <div class="node-desc">React 기반 UI</div>
-                        <div class="node-tech">Modern Web App</div>
+                <div class="stack-grid">
+                    <!-- Frontend 스택 (Row 1) -->
+                    <div class="stack-section frontend-stack pos-1-1">
+                        <div class="section-title">🎨 Frontend Layer</div>
+                        <div class="tech-item frontend-item primary-item">
+                            <div class="tech-icon">⚛️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">React 18</div>
+                                <div class="tech-desc">타입스크립트 기반 SPA</div>
+                                <div class="tech-version">TypeScript 46.4%</div>
+                            </div>
+                        </div>
+                        <div class="tech-item frontend-item">
+                            <div class="tech-icon">🎨</div>
+                            <div class="tech-content">
+                                <div class="tech-name">UmiJS</div>
+                                <div class="tech-desc">React 프레임워크</div>
+                                <div class="tech-version">.umirc.ts</div>
+                            </div>
+                        </div>
+                        <div class="tech-item frontend-item">
+                            <div class="tech-icon">📱</div>
+                            <div class="tech-content">
+                                <div class="tech-name">PDF Highlighter</div>
+                                <div class="tech-desc">문서 청킹 시각화</div>
+                                <div class="tech-version">react-pdf-highlighter</div>
+                            </div>
+                        </div>
+                        <div class="tech-item frontend-item">
+                            <div class="tech-icon">📦</div>
+                            <div class="tech-content">
+                                <div class="tech-name">NPM</div>
+                                <div class="tech-desc">패키지 관리</div>
+                                <div class="tech-version">npm install</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node ui-node pos-3-1">
-                        <div class="node-icon">📱</div>
-                        <div class="node-title">모바일 앱</div>
-                        <div class="node-desc">React Native</div>
-                        <div class="node-tech">iOS / Android</div>
+                    <!-- Backend API (Row 1-2) -->
+                    <div class="stack-section backend-stack pos-2-1">
+                        <div class="section-title">🚀 Backend API</div>
+                        <div class="tech-item backend-item primary-item">
+                            <div class="tech-icon">🐍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Python 3.10+</div>
+                                <div class="tech-desc">메인 개발 언어</div>
+                                <div class="tech-version">Python 51.1%</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item highlight-item">
+                            <div class="tech-icon">⚡</div>
+                            <div class="tech-content">
+                                <div class="tech-name">FastAPI</div>
+                                <div class="tech-desc">RESTful API 서버</div>
+                                <div class="tech-version">api/ragflow_server.py</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🔄</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Task Executor</div>
+                                <div class="tech-desc">백그라운드 작업 처리</div>
+                                <div class="tech-version">task_executor.py</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">📦</div>
+                            <div class="tech-content">
+                                <div class="tech-name">UV Package</div>
+                                <div class="tech-desc">의존성 관리</div>
+                                <div class="tech-version">uv sync --python 3.10</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node ui-node pos-4-1">
-                        <div class="node-icon">🎛️</div>
-                        <div class="node-title">관리 대시보드</div>
-                        <div class="node-desc">시스템 모니터링</div>
-                        <div class="node-tech">Admin Panel</div>
+                    <!-- AI/ML 엔진 (Row 1-3) -->
+                    <div class="stack-section backend-stack pos-3-1">
+                        <div class="section-title">🧠 AI/ML Engine</div>
+                        <div class="tech-item backend-item highlight-item">
+                            <div class="tech-icon">📄</div>
+                            <div class="tech-content">
+                                <div class="tech-name">DeepDoc</div>
+                                <div class="tech-desc">문서 구조 분석 AI</div>
+                                <div class="tech-version">deepdoc/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🕸️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">GraphRAG</div>
+                                <div class="tech-desc">지식 그래프 구축</div>
+                                <div class="tech-version">graphrag/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🤖</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Agent</div>
+                                <div class="tech-desc">Python/JS 코드 실행</div>
+                                <div class="tech-version">agent/ + sandbox/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🔗</div>
+                            <div class="tech-content">
+                                <div class="tech-name">MCP</div>
+                                <div class="tech-desc">Model Context Protocol</div>
+                                <div class="tech-version">mcp/</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node ui-node pos-5-1">
-                        <div class="node-icon">🔌</div>
-                        <div class="node-title">SDK 라이브러리</div>
-                        <div class="node-desc">개발자 도구</div>
-                        <div class="node-tech">Python, JS SDK</div>
+                    <!-- Container & DevOps (Row 1-4) -->
+                    <div class="stack-section infrastructure-stack pos-4-1">
+                        <div class="section-title">🐳 Container & DevOps</div>
+                        <div class="tech-item infra-item primary-item">
+                            <div class="tech-icon">🐳</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Docker Compose</div>
+                                <div class="tech-desc">컨테이너 오케스트레이션</div>
+                                <div class="tech-version">v2.26.1+</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-content">
+                                <div class="tech-name">NGINX</div>
+                                <div class="tech-desc">리버스 프록시</div>
+                                <div class="tech-version">Port 80</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">☸️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Kubernetes</div>
+                                <div class="tech-desc">프로덕션 배포</div>
+                                <div class="tech-version">helm/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🔒</div>
+                            <div class="tech-content">
+                                <div class="tech-name">gVisor</div>
+                                <div class="tech-desc">샌드박스 보안</div>
+                                <div class="tech-version">코드 실행 보호</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node ui-node pos-6-1">
-                        <div class="node-icon">📊</div>
-                        <div class="node-title">분석 대시보드</div>
-                        <div class="node-desc">사용량 분석</div>
-                        <div class="node-tech">Analytics UI</div>
+                    <!-- Database Layer (Row 2) -->
+                    <div class="stack-section database-stack pos-1-2">
+                        <div class="section-title">🔍 검색 엔진</div>
+                        <div class="tech-item database-item primary-item">
+                            <div class="tech-icon">🔍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Elasticsearch</div>
+                                <div class="tech-desc">전문 검색 + 벡터 검색</div>
+                                <div class="tech-version">8.11.3 (Port 1200)</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item highlight-item">
+                            <div class="tech-icon">⚡</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Infinity DB</div>
+                                <div class="tech-desc">AI 네이티브 벡터 DB</div>
+                                <div class="tech-version">DOC_ENGINE=infinity</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item">
+                            <div class="tech-icon">📊</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Kibana</div>
+                                <div class="tech-desc">검색 분석 도구</div>
+                                <div class="tech-version">Port 6601</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- API 및 게이트웨이 (Row 2) -->
-                    <div class="flow-node api-node pos-2-2">
-                        <div class="node-icon">🚪</div>
-                        <div class="node-title">API 게이트웨이</div>
-                        <div class="node-desc">트래픽 라우팅</div>
-                        <div class="node-tech">Kong, NGINX</div>
+                    <div class="stack-section database-stack pos-2-2">
+                        <div class="section-title">🗄️ 관계형 DB</div>
+                        <div class="tech-item database-item primary-item">
+                            <div class="tech-icon">🐘</div>
+                            <div class="tech-content">
+                                <div class="tech-name">MySQL 5.7</div>
+                                <div class="tech-desc">메타데이터 저장</div>
+                                <div class="tech-version">Port 5455</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item">
+                            <div class="tech-icon">⚡</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Redis</div>
+                                <div class="tech-desc">캐시 + 세션 관리</div>
+                                <div class="tech-version">Port 6379</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item">
+                            <div class="tech-icon">🔧</div>
+                            <div class="tech-content">
+                                <div class="tech-name">SQLAlchemy</div>
+                                <div class="tech-desc">ORM 레이어</div>
+                                <div class="tech-version">Python ORM</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node api-node pos-3-2">
-                        <div class="node-icon">🔑</div>
-                        <div class="node-title">인증 서비스</div>
-                        <div class="node-desc">OAuth2, JWT</div>
-                        <div class="node-tech">Auth0, Keycloak</div>
+                    <div class="stack-section database-stack pos-3-2">
+                        <div class="section-title">📁 Object Storage</div>
+                        <div class="tech-item database-item primary-item">
+                            <div class="tech-icon">🗃️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">MinIO</div>
+                                <div class="tech-desc">S3 호환 객체 저장소</div>
+                                <div class="tech-version">Port 9000/9001</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item">
+                            <div class="tech-icon">📄</div>
+                            <div class="tech-content">
+                                <div class="tech-name">File Management</div>
+                                <div class="tech-desc">문서 원본 저장</div>
+                                <div class="tech-version">PDF, DOCX, TXT, MD</div>
+                            </div>
+                        </div>
+                        <div class="tech-item database-item">
+                            <div class="tech-icon">🖼️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Image Storage</div>
+                                <div class="tech-desc">이미지 파일 처리</div>
+                                <div class="tech-version">JPEG, PNG, TIF, GIF</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node api-node pos-4-2">
-                        <div class="node-icon">📡</div>
-                        <div class="node-title">REST API</div>
-                        <div class="node-desc">시스템 연동</div>
-                        <div class="node-tech">FastAPI, Flask</div>
+                    <!-- LLM Integration (Row 2-4) -->
+                    <div class="stack-section backend-stack pos-4-2">
+                        <div class="section-title">🤖 LLM 통합</div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🧠</div>
+                            <div class="tech-content">
+                                <div class="tech-name">OpenAI GPT</div>
+                                <div class="tech-desc">GPT-4, GPT-3.5</div>
+                                <div class="tech-version">API 키 설정</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🔍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">DeepSeek</div>
+                                <div class="tech-desc">국산 LLM</div>
+                                <div class="tech-version">DeepSeek-V2</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item highlight-item">
+                            <div class="tech-icon">🦙</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Ollama</div>
+                                <div class="tech-desc">로컬 LLM 배포</div>
+                                <div class="tech-version">Self-hosted</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Claude, Gemini</div>
+                                <div class="tech-desc">다중 LLM 지원</div>
+                                <div class="tech-version">Multi-provider</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node api-node pos-5-2">
-                        <div class="node-icon">⚡</div>
-                        <div class="node-title">WebSocket</div>
-                        <div class="node-desc">실시간 통신</div>
-                        <div class="node-tech">Socket.IO</div>
+                    <!-- Embedding Models (Row 3) -->
+                    <div class="stack-section backend-stack pos-1-3">
+                        <div class="section-title">🔢 Embedding Models</div>
+                        <div class="tech-item backend-item primary-item">
+                            <div class="tech-icon">🇨🇳</div>
+                            <div class="tech-content">
+                                <div class="tech-name">BGE Large</div>
+                                <div class="tech-desc">중국어 최적화</div>
+                                <div class="tech-version">bge-large-zh-v1.5</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🌍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Nomic Embed</div>
+                                <div class="tech-desc">긴 컨텍스트 지원</div>
+                                <div class="tech-version">nomic-embed-text-v1.5</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🤗</div>
+                            <div class="tech-content">
+                                <div class="tech-name">HuggingFace</div>
+                                <div class="tech-desc">다양한 임베딩 모델</div>
+                                <div class="tech-version">HF_ENDPOINT</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node security-node pos-6-2">
-                        <div class="node-icon">🛡️</div>
-                        <div class="node-title">보안 미들웨어</div>
-                        <div class="node-desc">암호화, 방화벽</div>
-                        <div class="node-tech">Security Layer</div>
+                    <div class="stack-section backend-stack pos-2-3">
+                        <div class="section-title">📊 Data Processing</div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🐼</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Pandas</div>
+                                <div class="tech-desc">데이터 분석</div>
+                                <div class="tech-version">DataFrame 처리</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🔢</div>
+                            <div class="tech-content">
+                                <div class="tech-name">NumPy</div>
+                                <div class="tech-desc">수치 연산</div>
+                                <div class="tech-version">벡터 계산</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">📝</div>
+                            <div class="tech-content">
+                                <div class="tech-name">PyPDF2</div>
+                                <div class="tech-desc">PDF 파싱</div>
+                                <div class="tech-version">문서 추출</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">👁️</div>
+                            <div class="tech-content">
+                                <div class="tech-name">OCR Engine</div>
+                                <div class="tech-desc">텍스트 인식</div>
+                                <div class="tech-version">Tesseract + EasyOCR</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 핵심 엔진 (Row 3) -->
-                    <div class="flow-node core-node pos-2-3">
-                        <div class="node-icon">🧠</div>
-                        <div class="node-title">RAG 엔진</div>
-                        <div class="node-desc">검색 증강 생성</div>
-                        <div class="node-tech">RAGFlow Core</div>
+                    <div class="stack-section backend-stack pos-3-3">
+                        <div class="section-title">🛠️ Development Tools</div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">📦</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Poetry/UV</div>
+                                <div class="tech-desc">Python 의존성 관리</div>
+                                <div class="tech-version">pyproject.toml</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🧪</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Pytest</div>
+                                <div class="tech-desc">테스트 프레임워크</div>
+                                <div class="tech-version">test/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item backend-item">
+                            <div class="tech-icon">🔍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Pre-commit</div>
+                                <div class="tech-desc">코드 품질 검사</div>
+                                <div class="tech-version">.pre-commit-config.yaml</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node core-node pos-3-3">
-                        <div class="node-icon">🔍</div>
-                        <div class="node-title">DeepDoc 엔진</div>
-                        <div class="node-desc">문서 분석 AI</div>
-                        <div class="node-tech">Layout Analysis</div>
+                    <!-- Configuration & Security (Row 3-4) -->
+                    <div class="stack-section infrastructure-stack pos-4-3">
+                        <div class="section-title">⚙️ Configuration</div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">📄</div>
+                            <div class="tech-content">
+                                <div class="tech-name">YAML Config</div>
+                                <div class="tech-desc">서비스 설정</div>
+                                <div class="tech-version">service_conf.yaml</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🔑</div>
+                            <div class="tech-content">
+                                <div class="tech-name">OAuth2</div>
+                                <div class="tech-desc">인증 시스템</div>
+                                <div class="tech-version">JWT + OIDC</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Environment</div>
+                                <div class="tech-desc">환경 변수 관리</div>
+                                <div class="tech-version">.env</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node core-node pos-4-3">
-                        <div class="node-icon">🔍</div>
-                        <div class="node-title">검색 엔진</div>
-                        <div class="node-desc">벡터 유사도 검색</div>
-                        <div class="node-tech">Semantic Search</div>
+                    <!-- Monitoring & Analytics (Row 4) -->
+                    <div class="stack-section infrastructure-stack pos-1-4">
+                        <div class="section-title">📊 모니터링</div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">📈</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Docker Logs</div>
+                                <div class="tech-desc">로그 수집</div>
+                                <div class="tech-version">docker logs -f</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">💾</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Volume Mounts</div>
+                                <div class="tech-desc">데이터 영속성</div>
+                                <div class="tech-version">Docker Volumes</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🔧</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Health Checks</div>
+                                <div class="tech-desc">서비스 상태 확인</div>
+                                <div class="tech-version">서비스 헬스체크</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node core-node pos-5-3">
-                        <div class="node-icon">🤖</div>
-                        <div class="node-title">LLM 통합</div>
-                        <div class="node-desc">GPT-4, Claude</div>
-                        <div class="node-tech">Multi-LLM Support</div>
+                    <div class="stack-section infrastructure-stack pos-2-4">
+                        <div class="section-title">📱 API & SDK</div>
+                        <div class="tech-item infra-item primary-item">
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-content">
+                                <div class="tech-name">RESTful API</div>
+                                <div class="tech-desc">HTTP API 서비스</div>
+                                <div class="tech-version">Port 9380</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🐍</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Python SDK</div>
+                                <div class="tech-desc">파이썬 클라이언트</div>
+                                <div class="tech-version">sdk/python/</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">📝</div>
+                            <div class="tech-content">
+                                <div class="tech-name">OpenAPI</div>
+                                <div class="tech-desc">API 문서화</div>
+                                <div class="tech-version">/docs</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flow-node core-node pos-6-3">
-                        <div class="node-icon">🌍</div>
-                        <div class="node-title">다국어 처리</div>
-                        <div class="node-desc">언어간 쿼리</div>
-                        <div class="node-tech">Cross-lingual</div>
+                    <div class="stack-section infrastructure-stack pos-3-4">
+                        <div class="section-title">🔧 시스템 요구사항</div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">💻</div>
+                            <div class="tech-content">
+                                <div class="tech-name">CPU ≥ 4 cores</div>
+                                <div class="tech-desc">x86 아키텍처</div>
+                                <div class="tech-version">Intel/AMD</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🧠</div>
+                            <div class="tech-content">
+                                <div class="tech-name">RAM ≥ 16 GB</div>
+                                <div class="tech-desc">메모리 요구사항</div>
+                                <div class="tech-version">MEM_LIMIT</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">💾</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Disk ≥ 50 GB</div>
+                                <div class="tech-desc">저장 공간</div>
+                                <div class="tech-version">이미지 + 데이터</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 데이터 레이어 (Row 4) -->
-                    <div class="flow-node data-node pos-2-4">
-                        <div class="node-icon">🗄️</div>
-                        <div class="node-title">벡터 DB</div>
-                        <div class="node-desc">임베딩 저장</div>
-                        <div class="node-tech">Milvus, Weaviate</div>
-                    </div>
-
-                    <div class="flow-node storage-node pos-3-4">
-                        <div class="node-icon">📁</div>
-                        <div class="node-title">문서 저장소</div>
-                        <div class="node-desc">원본 파일 관리</div>
-                        <div class="node-tech">S3, MinIO</div>
-                    </div>
-
-                    <div class="flow-node data-node pos-4-4">
-                        <div class="node-icon">🐘</div>
-                        <div class="node-title">관계형 DB</div>
-                        <div class="node-desc">메타데이터</div>
-                        <div class="node-tech">PostgreSQL</div>
-                    </div>
-
-                    <div class="flow-node storage-node pos-5-4">
-                        <div class="node-icon">⚡</div>
-                        <div class="node-title">캐시 시스템</div>
-                        <div class="node-desc">성능 최적화</div>
-                        <div class="node-tech">Redis, Memcached</div>
-                    </div>
-
-                    <div class="flow-node storage-node pos-6-4">
-                        <div class="node-icon">🔍</div>
-                        <div class="node-title">로그 및 모니터링</div>
-                        <div class="node-desc">시스템 추적</div>
-                        <div class="node-tech">ELK Stack</div>
+                    <div class="stack-section infrastructure-stack pos-4-4">
+                        <div class="section-title">🌍 Integration</div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🔗</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Tavily Search</div>
+                                <div class="tech-desc">인터넷 검색 연동</div>
+                                <div class="tech-version">실시간 정보</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">📊</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Text2SQL</div>
+                                <div class="tech-desc">자연어 → SQL</div>
+                                <div class="tech-version">구조화 데이터 질의</div>
+                            </div>
+                        </div>
+                        <div class="tech-item infra-item">
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-content">
+                                <div class="tech-name">Multi-Language</div>
+                                <div class="tech-desc">다국어 지원</div>
+                                <div class="tech-version">Cross-lingual Query</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -396,11 +766,11 @@
             <!-- 하단 정보 -->
             <div class="bottom-info">
                 <div class="company-info">
-                    알파브라더스 × RAGFlow 엔터프라이즈 솔루션
+                    알파브라더스 × RAGFlow 실제 기술 스택
                 </div>
                 <div class="page-info">
                     Page 8 of 11<br>
-                    RAGFlow 기술 스택
+                    검증된 오픈소스 아키텍처
                 </div>
             </div>
         </div>
