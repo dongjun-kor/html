@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다문화 부모 AI 다국어 교육 프로그램 - 결론</title>
+    
+    <!-- SUIT 폰트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: -1px 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SUIT', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: white;
+            overflow: hidden;
+            font-weight: 400;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 1024px;
+            height: 576px;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #1d4ed8 50%, #2563eb 100%);
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 12px 18px 8px 18px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 10px;
+            text-align: center;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .comparison-layout {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 8px;
+            padding: 12px;
+            color: #1e293b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            height: 540px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .our-project {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .our-project-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 6px;
+            text-align: center;
+            background: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .our-project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .our-detail-item {
+            background: white;
+            padding: 4px 6px;
+            border-radius: 4px;
+            border: 1px solid #a7f3d0;
+            font-size: 8px;
+        }
+
+        .our-detail-label {
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 1px;
+        }
+
+        .our-detail-value {
+            color: #065f46;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .comparison-section {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .platform-group {
+            margin-bottom: 10px;
+        }
+
+        .platform-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 6px;
+            padding: 3px 6px;
+            background: #dbeafe;
+            border-radius: 4px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .competitor-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 5px 8px;
+            margin-bottom: 4px;
+            font-size: 7px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .competitor-name {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 3px;
+            font-size: 8px;
+        }
+
+        .competitor-type {
+            color: #64748b;
+            font-size: 6px;
+            margin-bottom: 3px;
+        }
+
+        .competitor-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+        }
+
+        .detail-item {
+            background: #f8fafc;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 6px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .detail-value {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .price-high {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .price-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .price-low {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .analysis-section {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 8px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .analysis-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #7c3aed;
+            margin-bottom: 6px;
+        }
+
+        .analysis-item {
+            background: white;
+            border-radius: 4px;
+            padding: 4px 6px;
+            margin-bottom: 3px;
+            font-size: 7px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .analysis-point {
+            font-weight: 700;
+            color: #6b21a8;
+            margin-bottom: 1px;
+        }
+
+        .analysis-desc {
+            color: #4b5563;
+            font-size: 6px;
+        }
+
+        .advantage-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 1px 4px;
+            border-radius: 8px;
+            font-size: 5px;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+
+        /* 하단 정보 */
+        .bottom-info {
+            position: absolute;
+            bottom: 8px;
+            left: 18px;
+            right: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            z-index: 10;
+        }
+
+        .company-info {
+            font-size: 7px;
+            font-weight: 600;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .page-info {
+            text-align: right;
+            font-size: 6px;
+            opacity: 0.7;
+            line-height: 1.3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide">
+            <h1 class="page-title">비교 견적 분석</h1>
+            <div class="subtitle">다문화 가정 AI 다국어 교육 프로그램 vs 교육 플랫폼 개발 프로젝트 비교</div>
+            
+            <div class="comparison-layout">
+                <!-- 좌측: 우리 프로젝트 및 경쟁 견적 -->
+                <div class="section">
+                    <div class="section-header">💰 프로젝트 견적 비교</div>
+                    
+                    <!-- 우리 프로젝트 -->
+                    <div class="our-project">
+                        <div class="our-project-title">🎯 우리 프로젝트 - 다문화 가정 AI 다국어 교육</div>
+                        <div class="our-project-details">
+                            <div class="our-detail-item">
+                                <div class="our-detail-label">1차 예산</div>
+                                <div class="our-detail-value">3억 5천만원</div>
+                            </div>
+                            <div class="our-detail-item">
+                                <div class="our-detail-label">개발기간</div>
+                                <div class="our-detail-value">8개월</div>
+                            </div>
+                            <div class="our-detail-item">
+                                <div class="our-detail-label">범위</div>
+                                <div class="our-detail-value">MVP 플랫폼</div>
+                            </div>
+                            <div class="our-detail-item">
+                                <div class="our-detail-label">대상</div>
+                                <div class="our-detail-value">다문화 부모 500명</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <!-- 위시켓 프로젝트들 -->
+                        <div class="platform-group">
+                            <div class="platform-title">📱 위시켓 프로젝트</div>
+                            
+                            <div class="competitor-card">
+                                <div class="competitor-name">인공지능 서비스를 활용한 교육플랫폼 구축</div>
+                                <div class="competitor-type">개발·디자인·기획 웹 LMS·강의 플랫폼</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-medium">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">9,000만원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">기간</div>
+                                        <div class="detail-value">120일</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="competitor-card">
+                                <div class="competitor-name">LMS 에듀 플랫폼 반응형 웹 개발</div>
+                                <div class="competitor-type">개발·디자인·기획 웹 LMS·강의 플랫폼</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-medium">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">1억 5천만원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">기간</div>
+                                        <div class="detail-value">240일</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="competitor-card">
+                                <div class="competitor-name">영어교육 B2B LMS 개발</div>
+                                <div class="competitor-type">개발·디자인·기획 웹 LMS·강의 플랫폼</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-medium">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">9,000만원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">기간</div>
+                                        <div class="detail-value">180일</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 나라장터 프로젝트들 -->
+                        <div class="platform-group">
+                            <div class="platform-title">🏛️ 나라장터 프로젝트</div>
+                            
+                            <div class="competitor-card">
+                                <div class="competitor-name">AI 솔루션 교육센터 플랫폼 구축</div>
+                                <div class="competitor-type">연세대학교 원주산학협력단</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-medium">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">1억 5천만원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">발주시기</div>
+                                        <div class="detail-value">2025.05</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="competitor-card">
+                                <div class="competitor-name">제주어 교육 플랫폼 구축</div>
+                                <div class="competitor-type">공공기관 발주</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-medium">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">1억원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">추정가격</div>
+                                        <div class="detail-value">9,091만원</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="competitor-card">
+                                <div class="competitor-name">남원시 사교육 걱정없는 학습플랫폼 구축</div>
+                                <div class="competitor-type">남원시청 발주</div>
+                                <div class="competitor-details">
+                                    <div class="detail-item price-high">
+                                        <div class="detail-label">예산</div>
+                                        <div class="detail-value">5억 6천만원</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">추정가격</div>
+                                        <div class="detail-value">5억 909만원</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측: 분석 및 장점 -->
+                <div class="section">
+                    <div class="section-header">📊 경쟁력 분석</div>
+                    
+                    <div class="analysis-section">
+                        <div class="analysis-title">💡 우리 프로젝트의 차별화 포인트</div>
+                        
+                        <div class="analysis-item">
+                            <div class="analysis-point">정부정책 부합성 <span class="advantage-badge">사회적 가치</span></div>
+                            <div class="analysis-desc">다문화 사회 통합정책과 일치하는 공익성 높은 사업</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point">10개국 다국어 지원 <span class="advantage-badge">특화 기술</span></div>
+                            <div class="analysis-desc">한국어, 영어, 중국어, 일본어, 베트남어 등 맞춤형 교육</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point">AI 맞춤형 학습 <span class="advantage-badge">개인화</span></div>
+                            <div class="analysis-desc">발음 평가, 진도 관리, 실시간 피드백 AI 시스템</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point">취업 연계 교육 <span class="advantage-badge">실용성</span></div>
+                            <div class="analysis-desc">서비스업, 제조업, 전문직 맞춤 언어 교육 과정</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point">모바일 우선 설계 <span class="advantage-badge">접근성</span></div>
+                            <div class="analysis-desc">언제 어디서나 학습 가능한 React Native 앱</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point">교육청 연계 <span class="advantage-badge">확장성</span></div>
+                            <div class="analysis-desc">전국 교육청 확산을 통한 규모 경제 달성</div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section" style="border-left-color: #ef4444; margin-top: 8px;">
+                        <div class="analysis-title" style="color: #dc2626;">⚠️ 경쟁 프로젝트 한계점</div>
+                        
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #dc2626;">범용 교육 플랫폼</div>
+                            <div class="analysis-desc">다문화 가정 특화 기능 부족, 일반적인 LMS 구조</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #dc2626;">단일 언어 중심</div>
+                            <div class="analysis-desc">한국어 또는 영어 위주, 다국어 동시 지원 미흡</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #dc2626;">AI 기술 부족</div>
+                            <div class="analysis-desc">단순 콘텐츠 제공 위주, 개인 맞춤 AI 학습 미적용</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #dc2626;">취업 연계 부족</div>
+                            <div class="analysis-desc">학습만 제공, 실제 사회 통합 및 취업 지원 연계 미흡</div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section" style="border-left-color: #10b981; margin-top: 8px;">
+                        <div class="analysis-title" style="color: #059669;">🎯 투자 대비 효과 (ROI)</div>
+                        
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #059669;">사회적 파급효과</div>
+                            <div class="analysis-desc">다문화 가정 500세대 → 2,000명 직간접 수혜</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #059669;">정부 정책 기여</div>
+                            <div class="analysis-desc">사회통합정책 실현으로 정부 지원 및 확산 가능성</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #059669;">기술 자산 확보</div>
+                            <div class="analysis-desc">다국어 AI 교육 기술로 해외 진출 기반 마련</div>
+                        </div>
+
+                        <div class="analysis-item">
+                            <div class="analysis-point" style="color: #059669;">지속 가능성</div>
+                            <div class="analysis-desc">교육청 예산 지원으로 안정적 운영 및 확장</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 정보 -->
+            <div class="bottom-info">
+                <div class="company-info">
+                    비교 견적 분석 - 다문화 가정 AI 다국어 교육 프로그램
+                </div>
+                <div class="page-info">
+                    Page 11 of 11<br>
+                    Multicultural AI Education
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

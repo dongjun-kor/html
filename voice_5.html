@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어별 맞춤형 학습 커리큘럼</title>
+    
+    <!-- SUIT 폰트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SUIT', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: white;
+            overflow: hidden;
+            font-weight: 400;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 1024px;
+            height: 576px;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 100%);
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 20px 30px 15px 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 배경 장식 요소들 */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+        }
+
+        .circle-1 {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            top: -15px;
+            right: -15px;
+        }
+
+        .circle-2 {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.04);
+            bottom: -5px;
+            left: -5px;
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .architecture-layout {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px;
+            color: #1e293b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            height: 480px;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 10px;
+        }
+
+        .dual-track-header {
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .main-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            height: 100%;
+        }
+
+        .section {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 10px;
+            border-left: 4px solid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .frontend-section {
+            border-left-color: #3b82f6;
+        }
+
+        .backend-section {
+            border-left-color: #10b981;
+        }
+
+        .database-section {
+            border-left-color: #f59e0b;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+            color: #1e293b;
+        }
+
+        .component-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .component-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 6px;
+            font-size: 9px;
+            transition: all 0.2s ease;
+        }
+
+        .component-item:hover {
+            border-color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .component-title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .component-desc {
+            color: #64748b;
+            font-size: 8px;
+            line-height: 1.3;
+        }
+
+        .component-tech {
+            color: #059669;
+            font-size: 7px;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .bottom-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .supabase-benefits {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .voice-options {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .bottom-section-title {
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .benefit-item, .voice-option {
+            font-size: 8px;
+            margin-bottom: 3px;
+            opacity: 0.9;
+        }
+
+        .track-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 8px;
+            margin: 0 4px;
+        }
+
+        .normal-track {
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .adult-track {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* 특별 강조 아이템 */
+        .highlight-item {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-color: #f59e0b;
+        }
+
+        .security-item {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-color: #ef4444;
+        }
+
+        /* 하단 정보 */
+        .bottom-info {
+            position: absolute;
+            bottom: 15px;
+            left: 30px;
+            right: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            z-index: 10;
+        }
+
+        .company-info {
+            font-size: 9px;
+            font-weight: 600;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .page-info {
+            text-align: right;
+            font-size: 8px;
+            opacity: 0.7;
+            line-height: 1.3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide">
+            <!-- 배경 장식 요소 -->
+            <div class="bg-decoration circle-1"></div>
+            <div class="bg-decoration circle-2"></div>
+
+            <h1 class="page-title">언어별 맞춤형 학습 커리큘럼</h1>
+            
+            <div class="architecture-layout">
+                <div class="dual-track-header">
+                    🌍 다국어 학습 트랙 시스템
+                    <span class="track-badge normal-track">기초 과정</span>
+                    <span class="track-badge adult-track">심화 과정</span>
+                </div>
+
+                <div class="main-sections">
+                    <!-- 한국어 트랙 -->
+                    <div class="section frontend-section">
+                        <div class="section-title">🇰🇷 한국어 학습 트랙</div>
+                        <div class="component-list">
+                            <div class="component-item">
+                                <div class="component-title">기초 한국어 (1-3개월)</div>
+                                <div class="component-desc">기본 인사, 일상 회화, 기초 문법</div>
+                                <div class="component-tech">발음 교정, 듣기 연습</div>
+                            </div>
+                            <div class="component-item highlight-item">
+                                <div class="component-title">생활 한국어 (4-6개월)</div>
+                                <div class="component-desc">쇼핑, 병원, 은행 등 실생활 소통</div>
+                                <div class="component-tech">상황별 회화, 어휘 확장</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">직장 한국어 (7-9개월)</div>
+                                <div class="component-desc">면접 준비, 직장 내 소통</div>
+                                <div class="component-tech">비즈니스 매너, 이메일 작성</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">TOPIK 준비 (10-12개월)</div>
+                                <div class="component-desc">한국어능력시험 대비</div>
+                                <div class="component-tech">문법, 독해, 쓰기 집중</div>
+                            </div>
+                            <div class="component-item security-item">
+                                <div class="component-title">한국 문화 이해</div>
+                                <div class="component-desc">전통문화, 현대사회 적응</div>
+                                <div class="component-tech">문화 체험, 예절 교육</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 영어 트랙 -->
+                    <div class="section backend-section">
+                        <div class="section-title">🇺🇸 영어 학습 트랙</div>
+                        <div class="component-list">
+                            <div class="component-item">
+                                <div class="component-title">🔧 영어 기초 다지기</div>
+                                <div class="component-desc">알파벳부터 기본 문법까지</div>
+                                <div class="component-tech">파닉스, 기초 회화</div>
+                            </div>
+                            <div class="component-item highlight-item">
+                                <div class="component-title">비즈니스 영어</div>
+                                <div class="component-desc">취업 면접, 회사 업무 영어</div>
+                                <div class="component-tech">프레젠테이션, 미팅 영어</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">서비스업 영어</div>
+                                <div class="component-desc">호텔, 식당, 매장 고객 응대</div>
+                                <div class="component-tech">친절 표현, 주문 받기</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">일상 영어 회화</div>
+                                <div class="component-desc">가족, 친구와의 일상 대화</div>
+                                <div class="component-tech">자연스러운 표현, 슬랭</div>
+                            </div>
+                            <div class="component-item security-item">
+                                <div class="component-title">영어권 문화 이해</div>
+                                <div class="component-desc">미국, 영국 문화 차이점</div>
+                                <div class="component-tech">매너, 소통 방식</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 기타 언어 트랙 -->
+                    <div class="section database-section">
+                        <div class="section-title">🌏 기타 언어 트랙</div>
+                        <div class="component-list">
+                            <div class="component-item highlight-item">
+                                <div class="component-title">중국어 (HSK 대비)</div>
+                                <div class="component-desc">비즈니스 중국어, 무역 실무</div>
+                                <div class="component-tech">간체자, 병음, 성조</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">일본어 (JLPT 대비)</div>
+                                <div class="component-desc">관광업, 서비스업 특화</div>
+                                <div class="component-tech">히라가나, 가타카나, 존경어</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">베트남어</div>
+                                <div class="component-desc">베트남 출신 학습자 대상</div>
+                                <div class="component-tech">성조, 발음 교정</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">태국어/몽골어</div>
+                                <div class="component-desc">출신국별 맞춤 언어</div>
+                                <div class="component-tech">문자, 기초 회화</div>
+                            </div>
+                            <div class="component-item security-item">
+                                <div class="component-title">다문화 가족 소통</div>
+                                <div class="component-desc">가족 간 언어 교환 학습</div>
+                                <div class="component-tech">양방향 언어 교육</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-info-grid">
+                    <div class="supabase-benefits">
+                        <div class="bottom-section-title">🎯 맞춤형 학습 혜택</div>
+                        <div class="benefit-item">• 개인별 진도 관리: 수준별 맞춤 커리큘럼</div>
+                        <div class="benefit-item">• AI 발음 교정: 실시간 발음 피드백</div>
+                        <div class="benefit-item">• 실생활 중심: 일상생활 필수 표현 우선</div>
+                        <div class="benefit-item">• 취업 연계: 직업별 특화 언어 교육</div>
+                        <div class="benefit-item">• 문화 통합: 언어와 문화를 함께 학습</div>
+                    </div>
+
+                    <div class="voice-options">
+                        <div class="bottom-section-title">📚 학습 방법 옵션</div>
+                        <div class="voice-option">1️⃣ 모바일 앱: 언제 어디서나 학습 가능</div>
+                        <div class="voice-option">2️⃣ AI 튜터: 개인별 맞춤 피드백 제공</div>
+                        <div class="voice-option">3️⃣ 그룹 스터디: 같은 출신국 학습자 모임</div>
+                        <div class="voice-option">→ 학습 스타일에 따라 유연한 선택</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 정보 -->
+            <div class="bottom-info">
+                <div class="company-info">
+    
+                </div>
+                <div class="page-info">
+                    Page 5 of 10<br>
+                    다문화 부모 AI 다국어 교육 시스템
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

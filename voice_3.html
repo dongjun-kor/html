@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다문화 부모의 언어 학습 필요성 및 현황</title>
+    
+    <!-- SUIT 폰트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SUIT', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: white;
+            overflow: hidden;
+            font-weight: 400;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 1024px;
+            height: 576px;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 100%);
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 25px 35px 20px 35px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 배경 장식 요소들 */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+        }
+
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.08);
+            top: -20px;
+            right: -20px;
+        }
+
+        .circle-2 {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.04);
+            bottom: -8px;
+            left: -8px;
+        }
+
+        .circle-3 {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.05);
+            top: 70px;
+            left: 20px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            height: 320px;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px;
+            color: #1e293b;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .problems-list, .objectives-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+            overflow-y: visible;
+            max-height: none;
+        }
+
+        .problem-item {
+            background: #f8fafc;
+            border-left: 3px solid #ef4444;
+            border-radius: 5px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .problem-item:hover {
+            background: #f1f5f9;
+            transform: translateX(2px);
+        }
+
+        .problem-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #dc2626;
+            margin-bottom: 2px;
+        }
+
+        .problem-desc {
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        .objective-item {
+            background: #f0f9ff;
+            border-left: 3px solid #3b82f6;
+            border-radius: 5px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .objective-item:hover {
+            background: #e0f2fe;
+            transform: translateX(2px);
+        }
+
+        .objective-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 2px;
+        }
+
+        .objective-desc {
+            font-size: 10px;
+            color: #475569;
+            line-height: 1.3;
+        }
+
+        .effects-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 12px;
+            color: #1e293b;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 8px;
+            height: 100px;
+        }
+
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+            height: 60px;
+        }
+
+        .effect-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .effect-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .effect-icon {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .effect-title {
+            font-size: 8px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1px;
+        }
+
+        .effect-desc {
+            font-size: 7px;
+            color: #64748b;
+            line-height: 1.1;
+        }
+
+        /* 하단 정보 */
+        .bottom-info {
+            position: absolute;
+            bottom: 20px;
+            left: 35px;
+            right: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            z-index: 10;
+        }
+
+        .company-info {
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .page-info {
+            text-align: right;
+            font-size: 9px;
+            opacity: 0.7;
+            line-height: 1.3;
+            color: white;
+        }
+
+        /* 스크롤바 숨기기 */
+        .problems-list::-webkit-scrollbar,
+        .objectives-list::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        .problems-list::-webkit-scrollbar-track,
+        .objectives-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .problems-list::-webkit-scrollbar-thumb,
+        .objectives-list::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide">
+            <!-- 배경 장식 요소 -->
+            <div class="bg-decoration circle-1"></div>
+            <div class="bg-decoration circle-2"></div>
+            <div class="bg-decoration circle-3"></div>
+
+            <h1 class="page-title">다문화 부모의 언어 학습 필요성 및 현황</h1>
+            
+            <div class="content-container">
+                <!-- 기존 문제점 -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon">⚠️</div>
+                        <div class="section-title">다문화 부모의 언어 학습 제약 사항</div>
+                    </div>
+                    
+                    <ul class="problems-list">
+                        <li class="problem-item">
+                            <div class="problem-title">1. 취업 기회 제한</div>
+                            <div class="problem-desc">언어 능력 부족으로 인한 직업 선택 범위 한정 및 경력 발전 어려움</div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-title">2. 사회 참여 기회 부족</div>
+                            <div class="problem-desc">언어 장벽으로 인해 지역사회 활동, 자원봉사 등 참여 제약</div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-title">3. 행정 업무 처리의 어려움</div>
+                            <div class="problem-desc">공공기관, 병원, 은행 등에서의 업무 처리 시 언어 소통 문제</div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-title">4. 자립 기반 구축 한계</div>
+                            <div class="problem-desc">언어 능력 부족으로 인한 경제적 자립 및 사회적 독립성 확보 어려움</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 프로그램의 목적 -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon">🎯</div>
+                        <div class="section-title">AI 다국어 교육 프로그램의 목적</div>
+                    </div>
+                    
+                    <ul class="objectives-list">
+                        <li class="objective-item">
+                            <div class="objective-title">다국어 능력 개발</div>
+                            <div class="objective-desc">한국어뿐만 아니라 영어, 중국어 등 글로벌 언어 역량 강화</div>
+                        </li>
+                        <li class="objective-item">
+                            <div class="objective-title">취업 역량 강화</div>
+                            <div class="objective-desc">직업별 실무 언어 교육을 통한 취업 기회 확대 및 경력 발전 지원</div>
+                        </li>
+                        <li class="objective-item">
+                            <div class="objective-title">사회 참여 확대</div>
+                            <div class="objective-desc">언어 능력 향상을 통한 지역사회 참여 및 사회적 네트워크 구축</div>
+                        </li>
+                        <li class="objective-item">
+                            <div class="objective-title">자립 기반 강화</div>
+                            <div class="objective-desc">언어 역량을 통한 경제적 자립 및 사회적 독립성 확보 지원</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 프로그램의 효과 및 차별성 -->
+            <div class="effects-section">
+                <div class="section-header">
+                    <div class="section-icon">✨</div>
+                    <div class="section-title">프로그램의 효과 및 차별성</div>
+                </div>
+                
+                <div class="effects-grid">
+                    <div class="effect-card">
+                        <div class="effect-icon">🌏</div>
+                        <div class="effect-title">10개국 언어</div>
+                        <div class="effect-desc">한국어, 영어, 중국어, 일본어 등 다양한 언어 선택</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-icon">💼</div>
+                        <div class="effect-title">취업 특화</div>
+                        <div class="effect-desc">직업별 맞춤형 언어 교육 및 면접 준비 프로그램</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-icon">🤖</div>
+                        <div class="effect-title">AI 개인 맞춤</div>
+                        <div class="effect-desc">개인 수준과 목표에 맞춘 최적화된 학습 경로 제공</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-icon">📱</div>
+                        <div class="effect-title">언제든 학습</div>
+                        <div class="effect-desc">모바일 기반으로 시간과 장소에 구애받지 않는 학습</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 정보 -->
+            <div class="bottom-info">
+                <div class="company-info">
+    
+                </div>
+                <div class="page-info">
+                    Page 3 of 10<br>
+                    다문화 부모 AI 다국어 교육 시스템
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

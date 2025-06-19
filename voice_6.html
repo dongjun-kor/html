@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부모 취업 역량 강화 특화 프로그램</title>
+    
+    <!-- SUIT 폰트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SUIT', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: white;
+            overflow: hidden;
+            font-weight: 400;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 1024px;
+            height: 576px;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 100%);
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 18px 25px 12px 25px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 배경 장식 요소들 */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+        }
+
+        .circle-1 {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.08);
+            top: -10px;
+            right: -10px;
+        }
+
+        .circle-2 {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.04);
+            bottom: -5px;
+            left: -5px;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .strategy-layout {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 12px;
+            color: #1e293b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 8px;
+        }
+
+        .main-strategy {
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            color: white;
+            padding: 6px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .three-plans-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            height: 100%;
+        }
+
+        .plan-section {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 8px;
+            border-left: 4px solid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-1 {
+            border-left-color: #8b5cf6;
+        }
+
+        .plan-2 {
+            border-left-color: #f59e0b;
+        }
+
+        .plan-3 {
+            border-left-color: #10b981;
+        }
+
+        .plan-header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 6px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .plan-overview {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            border: 1px solid #0ea5e9;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 6px;
+            font-size: 10px;
+            text-align: center;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .step-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+        }
+
+        .step-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 3px;
+            font-size: 9px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .step-item:hover {
+            border-color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1px;
+            font-size: 9px;
+        }
+
+        .step-desc {
+            color: #64748b;
+            font-size: 8px;
+            line-height: 1.2;
+            margin-bottom: 1px;
+        }
+
+        .step-tech {
+            color: #059669;
+            font-size: 7px;
+            font-weight: 600;
+        }
+
+        .spice-level {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 1px 3px;
+            border-radius: 6px;
+            font-size: 7px;
+            font-weight: 700;
+            margin-left: 2px;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            background: #ef4444;
+            color: white;
+            padding: 1px 3px;
+            border-radius: 4px;
+            font-size: 6px;
+            font-weight: 700;
+        }
+
+        .migration-badge {
+            background: #10b981;
+        }
+
+        .easy-item {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border-color: #10b981;
+        }
+
+        .medium-item {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-color: #f59e0b;
+        }
+
+        .hard-item {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-color: #ef4444;
+        }
+
+        .critical-item {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border-color: #d946ef;
+        }
+
+        .future-item {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border-color: #059669;
+        }
+
+        .fallback-label {
+            background: #f59e0b;
+            color: white;
+            padding: 1px 4px;
+            border-radius: 6px;
+            font-size: 7px;
+            font-weight: 700;
+            position: absolute;
+            top: -2px;
+            right: -2px;
+        }
+
+        /* 하단 정보 */
+        .bottom-info {
+            position: absolute;
+            bottom: 12px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            z-index: 10;
+        }
+
+        .company-info {
+            font-size: 8px;
+            font-weight: 600;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .page-info {
+            text-align: right;
+            font-size: 7px;
+            opacity: 0.7;
+            line-height: 1.3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide">
+            <!-- 배경 장식 요소 -->
+            <div class="bg-decoration circle-1"></div>
+            <div class="bg-decoration circle-2"></div>
+
+            <h1 class="page-title">부모 취업 역량 강화 특화 프로그램</h1>
+            
+            <div class="strategy-layout">
+                <div class="main-strategy">
+                    💼 직업별 맞춤 언어 교육 → 실무 역량 강화 → 성공적 취업 달성 전략
+                </div>
+
+                <div class="three-plans-layout">
+                    <!-- 1안: 서비스업 특화 -->
+                    <div class="plan-section plan-1">
+                        <div class="plan-header">
+                            🏪 서비스업 특화 프로그램
+                        </div>
+                        <div class="plan-overview">
+                            호텔, 식당, 매장 등 서비스업 취업 집중
+                        </div>
+                        <div class="step-flow">
+                            <div class="step-item easy-item">
+                                <div class="step-title">기초 서비스 언어</div>
+                                <div class="step-desc">인사말, 주문받기, 기본 응대 표현</div>
+                                <div class="step-tech">고객 응대 기본기</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">⚠️ 서비스업 필수 역량</div>
+                                <div class="step-desc">• 친절한 말투와 표정<br>• 빠른 상황 대처 능력<br>• 기본적인 계산 및 결제 처리</div>
+                                <div class="step-tech">Service Fundamentals</div>
+                            </div>
+                            <div class="step-item medium-item">
+                                <div class="step-title">호텔·숙박업 <span class="spice-level">전문</span></div>
+                                <div class="step-desc">체크인/아웃, 룸서비스, 컨시어지 업무</div>
+                                <div class="step-tech">호텔 전문 용어 + 영어 기초</div>
+                                <div class="difficulty-badge">MED</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">🔄 식당·카페 vs 매장 판매</div>
+                                <div class="step-desc">• 식당: 주문, 서빙, 계산<br>• 카페: 음료 제조, 포장<br>• 매장: 상품 설명, 교환/환불</div>
+                                <div class="step-tech">업종별 차별화 교육</div>
+                            </div>
+                            <div class="step-item hard-item">
+                                <div class="step-title">고급 서비스 <span class="spice-level">심화</span></div>
+                                <div class="step-desc">VIP 고객 응대, 클레임 처리</div>
+                                <div class="step-tech">Advanced Customer Service</div>
+                                <div class="difficulty-badge">HIGH</div>
+                            </div>
+                            <div class="step-item critical-item">
+                                <div class="step-title">리더십 과정 <span class="spice-level">관리직</span></div>
+                                <div class="step-desc">팀 관리, 매출 분석, 직원 교육<br>매니저급 승진 대비 과정</div>
+                                <div class="step-tech">Management Training</div>
+                                <div class="difficulty-badge">MAX</div>
+                            </div>
+                            <div class="step-item easy-item">
+                                <div class="step-title">💡 취업 지원</div>
+                                <div class="step-desc">• 이력서 작성법 + 면접 준비<br>• 서비스업 채용 정보 제공<br>• 실습 기회 연계</div>
+                                <div class="step-tech">Employment Support</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2안: 제조업 특화 -->
+                    <div class="plan-section plan-2">
+                        <div class="plan-header">
+                            🏭 제조업 특화 프로그램
+                        </div>
+                        <div class="plan-overview">
+                            공장, 생산직, 기술직 취업 대비
+                        </div>
+                        <div class="step-flow">
+                            <div class="step-item medium-item">
+                                <div class="step-title">기초 안전 교육</div>
+                                <div class="step-desc">산업안전, 작업장 규칙, 안전장비 사용법</div>
+                                <div class="step-tech">Safety First + 기본 용어</div>
+                                <div class="fallback-label">필수</div>
+                            </div>
+                            <div class="step-item hard-item">
+                                <div class="step-title">기계 조작 언어</div>
+                                <div class="step-desc">장비명, 조작법, 품질 관리 용어</div>
+                                <div class="step-tech">Technical Vocabulary</div>
+                                <div class="difficulty-badge">TECH</div>
+                            </div>
+                            <div class="step-item medium-item">
+                                <div class="step-title">품질 관리 과정</div>
+                                <div class="step-desc">검수, 포장, 납기 관리 업무</div>
+                                <div class="step-tech">Quality Control Process</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">공장 커뮤니케이션</div>
+                                <div class="step-desc">• 동료와의 협업 표현<br>• 상급자 보고 방법<br>• 문제 상황 대처법</div>
+                                <div class="step-tech">Workplace Communication</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">장점</div>
+                                <div class="step-desc">• 안정적인 근무 환경<br>• 기술 습득 기회<br>• 장기 근속 가능</div>
+                                <div class="step-tech">Stable Employment</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">준비사항</div>
+                                <div class="step-desc">• 체력 관리 필요<br>• 기계 적응 능력<br>• 팀워크 중시</div>
+                                <div class="step-tech">Physical & Mental Prep</div>
+                            </div>
+                            <div class="step-item medium-item">
+                                <div class="step-title">💡 기술 승진</div>
+                                <div class="step-desc">• 기능사 자격증 취득 지원<br>• 기술직 전환 교육<br>• 숙련공 양성 과정</div>
+                                <div class="step-tech">Skill Development</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3안: 전문직 준비 -->
+                    <div class="plan-section plan-3">
+                        <div class="plan-header">
+                            👩‍💼 전문직 준비 프로그램
+                        </div>
+                        <div class="plan-overview">
+                            사무직, 번역, 교육 등 전문 분야
+                        </div>
+                        <div class="step-flow">
+                            <div class="step-item future-item">
+                                <div class="step-title">사무직 기초 역량</div>
+                                <div class="step-desc">컴퓨터 활용, 문서 작성, 이메일 예절</div>
+                                <div class="step-tech">Office Skills Fundamentals</div>
+                                <div class="migration-badge difficulty-badge">BASIC</div>
+                            </div>
+                            <div class="step-item future-item">
+                                <div class="step-title">번역·통역 과정</div>
+                                <div class="step-desc">모국어 활용 전문 직업 준비</div>
+                                <div class="step-tech">Language Profession</div>
+                            </div>
+                            <div class="step-item future-item">
+                                <div class="step-title">교육 분야 진출</div>
+                                <div class="step-desc">다문화 교육강사, 언어 교사</div>
+                                <div class="step-tech">Education Career</div>
+                                <div class="migration-badge difficulty-badge">TEACH</div>
+                            </div>
+                            <div class="step-item future-item">
+                                <div class="step-title">창업 지원 과정</div>
+                                <div class="step-desc">본국 음식점, 수입업 등 사업 준비</div>
+                                <div class="step-tech">Entrepreneurship Support</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">자격증 취득 지원</div>
+                                <div class="step-desc">• 컴퓨터활용능력<br>• 사무자동화산업기사<br>• 외국어 관련 자격증</div>
+                                <div class="step-tech">Certification Support</div>
+                            </div>
+                            <div class="step-item future-item">
+                                <div class="step-title">💡 경력 개발</div>
+                                <div class="step-desc">• 인턴십 기회 제공<br>• 네트워킹 지원<br>• 멘토링 프로그램 운영</div>
+                                <div class="step-tech">Career Development</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-title">장기 목표</div>
+                                <div class="step-desc">• 안정적 전문직 정착<br>• 지역사회 리더 양성<br>• 문화 교류 활성화</div>
+                                <div class="step-tech">Long-term Vision</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 정보 -->
+            <div class="bottom-info">
+                <div class="company-info">
+    
+                </div>
+                <div class="page-info">
+                    Page 6 of 10<br>
+                    다문화 부모 AI 다국어 교육 시스템
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
