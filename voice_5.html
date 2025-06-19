@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심층 문서 이해 DeepDoc 기술</title>
+    <title>RAGFlow 핵심 기능 및 특화 모듈</title>
     
     <!-- SUIT 폰트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
@@ -40,98 +40,82 @@
             width: 100%;
             height: 100%;
             position: relative;
-            padding: 20px 30px 15px 30px;
+            padding: 12px 18px 8px 18px;
             color: white;
             display: flex;
             flex-direction: column;
         }
 
-        /* 배경 장식 요소들 */
-        .bg-decoration {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.06;
-        }
-
-        .circle-1 {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.08);
-            top: -15px;
-            right: -15px;
-        }
-
-        .circle-2 {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.04);
-            bottom: -5px;
-            left: -5px;
-        }
-
         .page-title {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
             text-align: center;
             letter-spacing: -0.02em;
         }
 
+        .subtitle {
+            font-size: 10px;
+            text-align: center;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
         .architecture-layout {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            padding: 15px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 8px;
+            padding: 12px;
             color: #1e293b;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            height: 480px;
+            height: 540px;
             overflow: hidden;
             display: grid;
             grid-template-rows: auto 1fr auto;
-            gap: 10px;
+            gap: 8px;
         }
 
         .dual-track-header {
             background: linear-gradient(90deg, #10b981, #3b82f6);
             color: white;
-            padding: 8px;
+            padding: 6px;
             border-radius: 8px;
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
         }
 
         .main-sections {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
             height: 100%;
         }
 
         .section {
             background: #f8fafc;
             border-radius: 8px;
-            padding: 10px;
+            padding: 8px;
             border-left: 4px solid;
             display: flex;
             flex-direction: column;
         }
 
-        .frontend-section {
-            border-left-color: #3b82f6;
-        }
-
-        .backend-section {
+        .deepdoc-section {
             border-left-color: #10b981;
         }
 
-        .database-section {
+        .search-section {
+            border-left-color: #3b82f6;
+        }
+
+        .advanced-section {
             border-left-color: #f59e0b;
         }
 
         .section-title {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-align: center;
             color: #1e293b;
         }
@@ -140,15 +124,15 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .component-item {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 6px;
-            padding: 6px;
-            font-size: 9px;
+            padding: 5px;
+            font-size: 7px;
             transition: all 0.2s ease;
         }
 
@@ -161,87 +145,93 @@
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 2px;
+            font-size: 8px;
         }
 
         .component-desc {
             color: #64748b;
-            font-size: 8px;
+            font-size: 6px;
             line-height: 1.3;
+            margin-bottom: 2px;
         }
 
         .component-tech {
             color: #059669;
-            font-size: 7px;
+            font-size: 5px;
             font-weight: 600;
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         .bottom-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .supabase-benefits {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+        .features-benefits {
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            padding: 8px;
+            padding: 6px;
             border-radius: 8px;
         }
 
-        .voice-options {
+        .supported-formats {
             background: linear-gradient(135deg, #8b5cf6, #7c3aed);
             color: white;
-            padding: 8px;
+            padding: 6px;
             border-radius: 8px;
         }
 
         .bottom-section-title {
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
-        .benefit-item, .voice-option {
-            font-size: 8px;
-            margin-bottom: 3px;
+        .benefit-item, .format-item {
+            font-size: 6px;
+            margin-bottom: 2px;
             opacity: 0.9;
         }
 
         .track-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-size: 8px;
-            margin: 0 4px;
+            padding: 1px 4px;
+            border-radius: 8px;
+            font-size: 7px;
+            margin: 0 3px;
         }
 
-        .normal-track {
+        .deepdoc-track {
             background: rgba(16, 185, 129, 0.2);
         }
 
-        .adult-track {
-            background: rgba(239, 68, 68, 0.2);
+        .graphrag-track {
+            background: rgba(59, 130, 246, 0.2);
         }
 
-        /* 특별 강조 아이템 */
         .highlight-item {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             border-color: #f59e0b;
         }
 
-        .security-item {
-            background: linear-gradient(135deg, #fee2e2, #fecaca);
-            border-color: #ef4444;
+        .premium-item {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            border-color: #6366f1;
+        }
+
+        .graph-item {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border-color: #10b981;
         }
 
         /* 하단 정보 */
         .bottom-info {
             position: absolute;
-            bottom: 15px;
-            left: 30px;
-            right: 30px;
+            bottom: 8px;
+            left: 18px;
+            right: 18px;
             display: flex;
             justify-content: space-between;
             align-items: end;
@@ -249,7 +239,7 @@
         }
 
         .company-info {
-            font-size: 9px;
+            font-size: 7px;
             font-weight: 600;
             opacity: 0.8;
             color: white;
@@ -257,7 +247,7 @@
 
         .page-info {
             text-align: right;
-            font-size: 8px;
+            font-size: 6px;
             opacity: 0.7;
             line-height: 1.3;
             color: white;
@@ -267,133 +257,146 @@
 <body>
     <div class="presentation-container">
         <div class="slide">
-            <!-- 배경 장식 요소 -->
-            <div class="bg-decoration circle-1"></div>
-            <div class="bg-decoration circle-2"></div>
-
-            <h1 class="page-title">심층 문서 이해 DeepDoc 기술</h1>
+            <h1 class="page-title">RAGFlow 핵심 기능 및 특화 모듈</h1>
+            <div class="subtitle">Deep Document Understanding과 GraphRAG를 통한 차세대 검색 증강 생성</div>
             
             <div class="architecture-layout">
                 <div class="dual-track-header">
-                    🧠 DeepDoc 문서 분석 시스템
-                    <span class="track-badge normal-track">레이아웃 분석</span>
-                    <span class="track-badge adult-track">콘텐츠 추출</span>
+                    🚀 RAGFlow 실제 핵심 기능
+                    <span class="track-badge deepdoc-track">DeepDoc</span>
+                    <span class="track-badge graphrag-track">GraphRAG</span>
                 </div>
 
                 <div class="main-sections">
-                    <!-- 문서 입력 처리 -->
-                    <div class="section frontend-section">
-                        <div class="section-title">📄 문서 입력 처리</div>
+                    <!-- DeepDoc 문서 이해 -->
+                    <div class="section deepdoc-section">
+                        <div class="section-title">📄 DeepDoc 문서 이해</div>
                         <div class="component-list">
+                            <div class="component-item highlight-item">
+                                <div class="component-title">레이아웃 분석</div>
+                                <div class="component-desc">제목, 단락, 표, 이미지 자동 인식</div>
+                                <div class="component-tech">Layout Recognition AI</div>
+                            </div>
                             <div class="component-item">
-                                <div class="component-title">PDF 파싱 엔진</div>
-                                <div class="component-desc">PDF 구조 분석 및 텍스트 추출</div>
-                                <div class="component-tech">PyPDF2, pdfplumber</div>
+                                <div class="component-title">표 구조 인식 (TSR)</div>
+                                <div class="component-desc">복잡한 표 구조 완벽 파싱</div>
+                                <div class="component-tech">CNN + YOLOv8</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">OCR 텍스트 추출</div>
+                                <div class="component-desc">스캔 문서 및 이미지 텍스트 인식</div>
+                                <div class="component-tech">Tesseract + EasyOCR</div>
+                            </div>
+                            <div class="component-item premium-item">
+                                <div class="component-title">템플릿 기반 청킹</div>
+                                <div class="component-desc">문서 유형별 최적화 분할</div>
+                                <div class="component-tech">Q&A, Resume, Paper, Manual</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">시각적 요소 처리</div>
+                                <div class="component-desc">차트, 그래프, 다이어그램 인식</div>
+                                <div class="component-tech">Computer Vision</div>
                             </div>
                             <div class="component-item highlight-item">
-                                <div class="component-title">DOCX 처리 시스템</div>
-                                <div class="component-desc">Word 문서 스타일 보존 분석</div>
-                                <div class="component-tech">python-docx, 서식 유지</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">이미지 OCR 처리</div>
-                                <div class="component-desc">문서 내 이미지 텍스트 인식</div>
-                                <div class="component-tech">Tesseract, EasyOCR</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">표 구조 인식</div>
-                                <div class="component-desc">테이블 경계 및 셀 관계 파악</div>
-                                <div class="component-tech">Camelot, Tabula</div>
-                            </div>
-                            <div class="component-item security-item">
-                                <div class="component-title">멀티모달 융합</div>
-                                <div class="component-desc">텍스트, 이미지, 표 통합 분석</div>
-                                <div class="component-tech">멀티모달 LLM 활용</div>
+                                <div class="component-title">청킹 시각화</div>
+                                <div class="component-desc">파싱 결과 확인 및 수동 개입 가능</div>
+                                <div class="component-tech">Human-in-the-loop</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 레이아웃 분석 -->
-                    <div class="section backend-section">
-                        <div class="section-title">🔍 레이아웃 분석 엔진</div>
+                    <!-- 하이브리드 검색 및 벡터 DB -->
+                    <div class="section search-section">
+                        <div class="section-title">🔍 하이브리드 검색 엔진</div>
                         <div class="component-list">
+                            <div class="component-item highlight-item">
+                                <div class="component-title">벡터 유사도 검색</div>
+                                <div class="component-desc">임베딩 기반 의미적 검색</div>
+                                <div class="component-tech">BGE, BCE, Nomic</div>
+                            </div>
                             <div class="component-item">
-                                <div class="component-title">문서 구조 파악</div>
-                                <div class="component-desc">제목, 단락, 목록 계층 구조</div>
-                                <div class="component-tech">LayoutLM, DocLM</div>
+                                <div class="component-title">전문 검색 (Full-text)</div>
+                                <div class="component-desc">키워드 기반 정확한 매칭</div>
+                                <div class="component-tech">Elasticsearch</div>
+                            </div>
+                            <div class="component-item premium-item">
+                                <div class="component-title">Infinity 데이터베이스</div>
+                                <div class="component-desc">AI 네이티브 고성능 벡터 DB</div>
+                                <div class="component-tech">Multiple Recall + Fused Ranking</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">다중 리콜 시스템</div>
+                                <div class="component-desc">벡터, 키워드, 구조화 데이터 통합</div>
+                                <div class="component-tech">Hybrid Search</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">재순위화 (Re-ranking)</div>
+                                <div class="component-desc">검색 결과 정확도 최적화</div>
+                                <div class="component-tech">Cross-encoder</div>
                             </div>
                             <div class="component-item highlight-item">
-                                <div class="component-title">시각적 요소 인식</div>
-                                <div class="component-desc">차트, 그래프, 다이어그램 분석</div>
-                                <div class="component-tech">YOLO, 객체 인식</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">페이지 분할</div>
-                                <div class="component-desc">논리적 섹션별 콘텐츠 분리</div>
-                                <div class="component-tech">세그멘테이션 알고리즘</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">읽기 순서 결정</div>
-                                <div class="component-desc">자연스러운 텍스트 흐름 파악</div>
-                                <div class="component-tech">Reading Order Detection</div>
-                            </div>
-                            <div class="component-item security-item">
-                                <div class="component-title">의미 영역 분할</div>
-                                <div class="component-desc">관련 콘텐츠 그룹핑 및 태깅</div>
-                                <div class="component-tech">Semantic Segmentation</div>
+                                <div class="component-title">크로스 언어 쿼리</div>
+                                <div class="component-desc">한국어 질문 → 영어 문서 검색</div>
+                                <div class="component-tech">Multilingual Embeddings</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 콘텐츠 추출 -->
-                    <div class="section database-section">
-                        <div class="section-title">⚡ 지능형 콘텐츠 추출</div>
+                    <!-- GraphRAG 및 고급 기능 -->
+                    <div class="section advanced-section">
+                        <div class="section-title">⚡ GraphRAG 및 고급 기능</div>
                         <div class="component-list">
+                            <div class="component-item graph-item">
+                                <div class="component-title">지식 그래프 구축</div>
+                                <div class="component-desc">엔티티 및 관계 자동 추출</div>
+                                <div class="component-tech">LLM-based Entity Extraction</div>
+                            </div>
+                            <div class="component-item graph-item">
+                                <div class="component-title">GraphRAG 검색</div>
+                                <div class="component-desc">멀티홉 질의응답 지원</div>
+                                <div class="component-tech">Community Detection</div>
+                            </div>
+                            <div class="component-item premium-item">
+                                <div class="component-title">RAPTOR 클러스터링</div>
+                                <div class="component-desc">계층적 텍스트 클러스터링</div>
+                                <div class="component-tech">Hierarchical Clustering</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">Agent 워크플로우</div>
+                                <div class="component-desc">Python/JS 코드 실행 지원</div>
+                                <div class="component-tech">Code Executor Sandbox</div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-title">인터넷 검색 통합</div>
+                                <div class="component-desc">Tavily 연동 실시간 정보</div>
+                                <div class="component-tech">Web Search Integration</div>
+                            </div>
                             <div class="component-item highlight-item">
-                                <div class="component-title">청킹 전략</div>
-                                <div class="component-desc">의미 단위 기반 텍스트 분할</div>
-                                <div class="component-tech">Semantic Chunking</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">벡터 임베딩</div>
-                                <div class="component-desc">고차원 의미 표현 생성</div>
-                                <div class="component-tech">OpenAI, HuggingFace</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">메타데이터 추출</div>
-                                <div class="component-desc">제목, 저자, 날짜, 키워드</div>
-                                <div class="component-tech">Named Entity Recognition</div>
-                            </div>
-                            <div class="component-item">
-                                <div class="component-title">관계 정보 파악</div>
-                                <div class="component-desc">문서 간 참조 및 연관 관계</div>
-                                <div class="component-tech">Knowledge Graph</div>
-                            </div>
-                            <div class="component-item security-item">
-                                <div class="component-title">품질 검증</div>
-                                <div class="component-desc">추출 정확도 검증 및 보정</div>
-                                <div class="component-tech">Quality Assurance</div>
+                                <div class="component-title">Text2SQL 변환</div>
+                                <div class="component-desc">자연어를 SQL 쿼리로 변환</div>
+                                <div class="component-tech">RAG-based SQL Generation</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="bottom-info-grid">
-                    <div class="supabase-benefits">
-                        <div class="bottom-section-title">🎯 DeepDoc 핵심 기능</div>
-                        <div class="benefit-item">• 복잡한 문서 구조 완벽 이해</div>
-                        <div class="benefit-item">• 표, 차트, 이미지 통합 분석</div>
-                        <div class="benefit-item">• 의미 단위 기반 정보 추출</div>
-                        <div class="benefit-item">• 다국어 문서 동시 처리</div>
-                        <div class="benefit-item">• 높은 정확도의 콘텐츠 파싱</div>
+                    <div class="features-benefits">
+                        <div class="bottom-section-title">🎯 RAGFlow 핵심 차별점</div>
+                        <div class="benefit-item">• "Quality in, Quality out" 원칙</div>
+                        <div class="benefit-item">• 템플릿 기반 지능형 청킹</div>
+                        <div class="benefit-item">• 인용 출처가 있는 신뢰할 수 있는 답변</div>
+                        <div class="benefit-item">• 56.9K GitHub 스타, 활발한 커뮤니티</div>
+                        <div class="benefit-item">• 엔터프라이즈급 확장성 및 보안</div>
                     </div>
 
-                    <div class="voice-options">
-                        <div class="bottom-section-title">� 지원 문서 형식</div>
-                        <div class="voice-option">📄 PDF: 스캔 문서 포함 완벽 지원</div>
-                        <div class="voice-option">📝 DOCX: 복잡한 서식 보존</div>
-                        <div class="voice-option">🖼️ 이미지: PNG, JPG OCR 처리</div>
-                        <div class="voice-option">→ 모든 기업 문서 형식 대응</div>
+                    <div class="supported-formats">
+                        <div class="bottom-section-title">📁 지원 문서 형식</div>
+                        <div class="format-item">📄 문서: PDF, DOC, DOCX, TXT, MD</div>
+                        <div class="format-item">� 표: CSV, XLSX, XLS</div>
+                        <div class="format-item">🖼️ 이미지: JPEG, PNG, TIF, GIF</div>
+                        <div class="format-item">📽️ 슬라이드: PPT, PPTX</div>
+                        <div class="format-item">→ 스캔 문서 포함 모든 형식 지원</div>
                     </div>
                 </div>
             </div>
@@ -405,7 +408,7 @@
                 </div>
                 <div class="page-info">
                     Page 5 of 11<br>
-                    RAGFlow 엔터프라이즈 문서 관리 시스템
+                    RAGFlow 핵심 기능
                 </div>
             </div>
         </div>
