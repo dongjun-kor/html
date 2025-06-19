@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모바일 기반 개인별 맞춤 학습 시스템</title>
+    <title>RAGFlow 비즈니스 모델 및 가격 정책</title>
     
     <!-- SUIT 폰트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
@@ -91,73 +91,84 @@
             margin-bottom: 5px;
         }
 
-        .flow-steps {
+        .pricing-plans {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             flex: 1;
         }
 
-        .flow-step {
+        .pricing-plan {
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
-            padding: 8px;
+            padding: 10px;
             font-size: 9px;
             transition: all 0.3s ease;
             position: relative;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .flow-step:hover {
+        .pricing-plan:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .step-number {
+        .plan-badge {
             position: absolute;
             top: -8px;
-            left: 8px;
+            right: 10px;
             background: #2563eb;
             color: white;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8px;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 7px;
             font-weight: 700;
         }
 
-        .step-title {
+        .plan-name {
             font-weight: 700;
-            margin-bottom: 3px;
-            font-size: 10px;
+            margin-bottom: 4px;
+            font-size: 12px;
             color: #1e293b;
         }
 
-        .step-desc {
+        .plan-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-feature {
             font-size: 8px;
             color: #64748b;
-            line-height: 1.3;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
+            padding-left: 12px;
+            position: relative;
         }
 
-        .step-tech {
-            font-size: 7px;
-            color: #059669;
-            font-weight: 600;
+        .plan-feature::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
         }
 
-        /* API 구조 */
-        .api-section {
+        .business-section {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .api-endpoints {
+        .business-model {
             background: #f8fafc;
             border-radius: 6px;
             padding: 8px;
@@ -166,11 +177,11 @@
             overflow-y: auto;
         }
 
-        .endpoint-group {
+        .model-group {
             margin-bottom: 8px;
         }
 
-        .endpoint-group-title {
+        .model-title {
             font-size: 9px;
             font-weight: 700;
             color: #1e40af;
@@ -179,7 +190,7 @@
             padding-bottom: 2px;
         }
 
-        .endpoint-item {
+        .model-item {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 4px;
@@ -188,119 +199,51 @@
             font-size: 7px;
         }
 
-        .endpoint-method {
-            display: inline-block;
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-size: 6px;
+        .model-name {
             font-weight: 700;
-            margin-right: 4px;
-        }
-
-        .method-get { background: #10b981; color: white; }
-        .method-post { background: #2563eb; color: white; }
-        .method-put { background: #f59e0b; color: white; }
-        .method-delete { background: #ef4444; color: white; }
-
-        .endpoint-path {
-            font-family: 'Courier New', monospace;
-            color: #1e293b;
-        }
-
-        .endpoint-desc {
-            color: #64748b;
-            font-size: 6px;
-            margin-top: 2px;
-        }
-
-        /* 데이터베이스 구조 */
-        .db-structure {
-            background: #f1f5f9;
-            border-radius: 6px;
-            padding: 8px;
-            border-left: 4px solid #059669;
-            margin-top: 8px;
-        }
-
-        .db-table {
-            background: white;
-            border-radius: 4px;
-            padding: 6px;
-            margin-bottom: 6px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .table-name {
-            font-size: 9px;
-            font-weight: 700;
-            color: #059669;
-            margin-bottom: 3px;
-        }
-
-        .table-field {
-            font-size: 7px;
-            color: #475569;
+            color: #2563eb;
             margin-bottom: 1px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .field-type {
-            color: #7c3aed;
-            font-weight: 600;
-        }
-
-        /* 과금 모델 */
-        .billing-model {
-            background: #fef3c7;
-            border-radius: 6px;
-            padding: 8px;
-            border-left: 4px solid #f59e0b;
-            margin-top: 8px;
-        }
-
-        .billing-item {
-            background: white;
-            border-radius: 4px;
-            padding: 4px 6px;
-            margin-bottom: 4px;
             font-size: 8px;
-            border: 1px solid #fde68a;
         }
 
-        .billing-type {
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 2px;
-        }
-
-        .billing-price {
-            color: #d97706;
-            font-weight: 600;
+        .model-desc {
+            color: #1e293b;
+            margin-bottom: 1px;
             font-size: 7px;
         }
 
-        /* 스토리지 구조 */
-        .storage-structure {
-            background: #ede9fe;
+        .model-benefit {
+            color: #059669;
+            font-size: 6px;
+            font-weight: 600;
+        }
+
+        .roi-analysis {
+            background: #fee2e2;
             border-radius: 6px;
             padding: 8px;
-            border-left: 4px solid #7c3aed;
+            border-left: 4px solid #ef4444;
             margin-top: 8px;
         }
 
-        .storage-path {
+        .roi-item {
             background: white;
             border-radius: 4px;
             padding: 4px 6px;
             margin-bottom: 3px;
             font-size: 7px;
-            font-family: 'Courier New', monospace;
-            border: 1px solid #d8b4fe;
+            border: 1px solid #fecaca;
         }
 
-        .path-level {
-            color: #7c3aed;
-            font-weight: 600;
+        .roi-metric {
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 1px;
+        }
+
+        .roi-value {
+            color: #7f1d1d;
+            font-size: 6px;
         }
 
         /* 하단 정보 */
@@ -329,212 +272,150 @@
             line-height: 1.3;
             color: white;
         }
+
+        .starter-plan { border-color: #10b981; }
+        .professional-plan { border-color: #3b82f6; }
+        .enterprise-plan { border-color: #f59e0b; }
+        .custom-plan { border-color: #8b5cf6; }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <div class="slide">
-            <h1 class="page-title">다문화 가정 AI 언어 교육 시스템 - 교육청 제안서</h1>
-            <div class="subtitle">모바일 기반 개인별 맞춤 학습 플랫폼 및 교육 성과 관리 시스템</div>
+            <h1 class="page-title">RAGFlow 비즈니스 모델 및 가격 정책</h1>
+            <div class="subtitle">오픈소스 기반 유연한 구독 모델과 맞춤형 엔터프라이즈 솔루션</div>
             
             <div class="service-layout">
-                <!-- 교육 서비스 플로우 -->
+                <!-- 가격 정책 -->
                 <div class="flow-section">
-                    <div class="section-header">📚 교육 서비스 플로우</div>
+                    <div class="section-header">� RAGFlow 가격 정책</div>
                     
-                    <div class="flow-steps">
-                        <div class="flow-step">
-                            <div class="step-number">1</div>
-                            <div class="step-title">학습자 등록 및 수준 진단</div>
-                            <div class="step-desc">다문화 가정 부모 등록, 언어 수준 테스트</div>
-                            <div class="step-tech">교육청 연계, 개인정보 보호</div>
+                    <div class="pricing-plans">
+                        <div class="pricing-plan starter-plan">
+                            <div class="plan-badge">Community</div>
+                            <div class="plan-name">스타터 플랜</div>
+                            <div class="plan-price">무료</div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">월 1,000회 질문 처리</li>
+                                <li class="plan-feature">최대 100MB 문서 업로드</li>
+                                <li class="plan-feature">기본 웹 인터페이스</li>
+                                <li class="plan-feature">커뮤니티 지원</li>
+                                <li class="plan-feature">오픈소스 셀프 호스팅</li>
+                            </ul>
                         </div>
 
-                        <div class="flow-step">
-                            <div class="step-number">2</div>
-                            <div class="step-title">맞춤형 학습 계획 수립</div>
-                            <div class="step-desc">AI 분석을 통한 개인별 커리큘럼 생성<br>• 기초생활 한국어 → 직업 한국어 → 고급 의사소통<br>• 영어, 중국어 등 글로벌 언어 옵션</div>
-                            <div class="step-tech">AI 추천 시스템, 단계별 학습 설계</div>
+                        <div class="pricing-plan professional-plan">
+                            <div class="plan-badge">Popular</div>
+                            <div class="plan-name">프로페셔널 플랜</div>
+                            <div class="plan-price">월 $99</div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">월 10,000회 질문 처리</li>
+                                <li class="plan-feature">최대 10GB 문서 저장</li>
+                                <li class="plan-feature">API 접근 권한</li>
+                                <li class="plan-feature">우선 기술 지원</li>
+                                <li class="plan-feature">고급 분석 대시보드</li>
+                            </ul>
                         </div>
 
-                        <div class="flow-step">
-                            <div class="step-number">3</div>
-                            <div class="step-title">모바일 학습 앱 이용</div>
-                            <div class="step-desc">언제 어디서나 접근 가능한 학습 환경<br>• 발음 교정, 회화 연습, 문법 학습<br>• 오프라인 모드 지원</div>
-                            <div class="step-tech">React Native, 크로스 플랫폼</div>
+                        <div class="pricing-plan enterprise-plan">
+                            <div class="plan-badge">Business</div>
+                            <div class="plan-name">엔터프라이즈 플랜</div>
+                            <div class="plan-price">월 $499</div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">무제한 질문 처리</li>
+                                <li class="plan-feature">무제한 문서 저장</li>
+                                <li class="plan-feature">SSO 및 RBAC</li>
+                                <li class="plan-feature">24/7 프리미엄 지원</li>
+                                <li class="plan-feature">온프레미스 배포</li>
+                                <li class="plan-feature">맞춤형 통합</li>
+                            </ul>
                         </div>
 
-                        <div class="flow-step">
-                            <div class="step-number">4</div>
-                            <div class="step-title">AI 튜터와 실시간 학습</div>
-                            <div class="step-desc">24시간 이용 가능한 AI 언어 교사<br>개인별 학습 속도와 수준에 맞춘 피드백</div>
-                            <div class="step-tech">다국어 AI, 실시간 음성 처리</div>
-                        </div>
-
-                        <div class="flow-step">
-                            <div class="step-number">5</div>
-                            <div class="step-title">학습 성과 추적 및 평가</div>
-                            <div class="step-desc">진도율, 성취도, 실력 향상 정도 실시간 모니터링</div>
-                            <div class="step-tech">학습 분석, 대시보드</div>
-                        </div>
-
-                        <div class="flow-step">
-                            <div class="step-number">6</div>
-                            <div class="step-title">교육청 성과 보고 및 정책 연계</div>
-                            <div class="step-desc">• 월별/분기별 교육 성과 리포트<br>• TOPIK 합격률, 취업 연계 성과<br>• 다문화 정책 개선 제안</div>
-                            <div class="step-tech">정책 연계, 성과 지표 관리</div>
+                        <div class="pricing-plan custom-plan">
+                            <div class="plan-badge">Custom</div>
+                            <div class="plan-name">맞춤형 솔루션</div>
+                            <div class="plan-price">맞춤 견적</div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">완전 맞춤형 개발</li>
+                                <li class="plan-feature">전용 클러스터</li>
+                                <li class="plan-feature">전담 기술 팀</li>
+                                <li class="plan-feature">SLA 보장</li>
+                                <li class="plan-feature">글로벌 배포</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- 교육청 제안 핵심 내용 -->
-                <div class="api-section">
-                    <div class="section-header">🏛️ 교육청 제안 핵심 내용</div>
+                <!-- 비즈니스 모델 -->
+                <div class="business-section">
+                    <div class="section-header">🚀 비즈니스 모델 전략</div>
                     
-                    <div class="api-endpoints">
-                        <div class="endpoint-group">
-                            <div class="endpoint-group-title">📋 사업 개요</div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-get">목적</span>
-                                <span class="endpoint-path">다문화 가정 언어 교육 격차 해소</span>
-                                <div class="endpoint-desc">부모의 한국어 능력 향상 → 자녀 교육 지원 강화</div>
+                    <div class="business-model">
+                        <div class="model-group">
+                            <div class="model-title">오픈소스 기반 전략</div>
+                            <div class="model-item">
+                                <div class="model-name">커뮤니티 성장</div>
+                                <div class="model-desc">오픈소스로 사용자 기반 확대</div>
+                                <div class="model-benefit">브랜드 인지도 및 신뢰성 구축</div>
                             </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-post">대상</span>
-                                <span class="endpoint-path">관내 다문화 가정 부모 500명</span>
-                                <div class="endpoint-desc">연차별 확대: 1년차 500명 → 3년차 2,000명</div>
-                            </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-put">기간</span>
-                                <span class="endpoint-path">2024년 3월 ~ 2027년 2월 (3년)</span>
-                                <div class="endpoint-desc">1단계 구축 → 2단계 확산 → 3단계 고도화</div>
+                            <div class="model-item">
+                                <div class="model-name">freemium 모델</div>
+                                <div class="model-desc">무료 사용으로 진입 장벽 제거</div>
+                                <div class="model-benefit">자연스러운 유료 전환 유도</div>
                             </div>
                         </div>
 
-                        <div class="endpoint-group">
-                            <div class="endpoint-group-title">💡 교육적 효과</div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-get">학습</span>
-                                <span class="endpoint-path">개인별 맞춤형 AI 교육</span>
-                                <div class="endpoint-desc">24시간 접근, 반복 학습, 즉시 피드백</div>
+                        <div class="model-group">
+                            <div class="model-title">수익 다각화</div>
+                            <div class="model-item">
+                                <div class="model-name">SaaS 구독</div>
+                                <div class="model-desc">클라우드 호스팅 서비스</div>
+                                <div class="model-benefit">안정적인 월간 반복 수익</div>
                             </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-post">사회</span>
-                                <span class="endpoint-path">사회 통합 및 참여 확대</span>
-                                <div class="endpoint-desc">언어 장벽 해소 → 지역사회 참여 증진</div>
+                            <div class="model-item">
+                                <div class="model-name">엔터프라이즈 라이센스</div>
+                                <div class="model-desc">대기업 맞춤형 솔루션</div>
+                                <div class="model-benefit">고수익 B2B 사업</div>
                             </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-put">경제</span>
-                                <span class="endpoint-path">취업 및 창업 기회 확대</span>
-                                <div class="endpoint-desc">언어 능력 향상 → 경제 활동 참여 증가</div>
+                            <div class="model-item">
+                                <div class="model-name">컨설팅 서비스</div>
+                                <div class="model-desc">구축 및 최적화 지원</div>
+                                <div class="model-benefit">고부가가치 서비스</div>
                             </div>
                         </div>
 
-                        <div class="endpoint-group">
-                            <div class="endpoint-group-title">🎯 성과 지표</div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-get">완주율</span>
-                                <span class="endpoint-path">목표 80% 이상</span>
-                                <div class="endpoint-desc">6개월 과정 완주 학습자 비율</div>
+                        <div class="model-group">
+                            <div class="model-title">시장 접근 전략</div>
+                            <div class="model-item">
+                                <div class="model-name">파트너십 확대</div>
+                                <div class="model-desc">시스템 통합업체와 협력</div>
+                                <div class="model-benefit">빠른 시장 침투</div>
                             </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-post">성취도</span>
-                                <span class="endpoint-path">TOPIK 2급 이상 70%</span>
-                                <div class="endpoint-desc">수료 후 한국어능력시험 성과</div>
-                            </div>
-                            <div class="endpoint-item">
-                                <span class="endpoint-method method-put">만족도</span>
-                                <span class="endpoint-path">90% 이상 만족</span>
-                                <div class="endpoint-desc">학습자 및 가족 만족도 조사</div>
+                            <div class="model-item">
+                                <div class="model-name">업종별 특화</div>
+                                <div class="model-desc">금융, 의료, 법률 등 전문화</div>
+                                <div class="model-benefit">높은 진입 장벽 구축</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="billing-model">
-                        <div class="endpoint-group-title" style="color: #92400e; margin-bottom: 6px;">💰 예산 계획 (3년간)</div>
-                        <div class="billing-item">
-                            <div class="billing-type">시스템 구축비</div>
-                            <div class="billing-price">1년차: 5억원 (플랫폼 개발, AI 모델)</div>
+                    <div class="roi-analysis">
+                        <div class="model-title" style="color: #dc2626; margin-bottom: 6px;">📈 투자 대비 효과 (ROI)</div>
+                        <div class="roi-item">
+                            <div class="roi-metric">업무 효율성 증대</div>
+                            <div class="roi-value">정보 검색 시간 80% 단축, 의사결정 속도 3배 향상</div>
                         </div>
-                        <div class="billing-item">
-                            <div class="billing-type">운영비</div>
-                            <div class="billing-price">연간 2억원 (서버, 콘텐츠 제작, 관리)</div>
+                        <div class="roi-item">
+                            <div class="roi-metric">비용 절감 효과</div>
+                            <div class="roi-value">기존 솔루션 대비 60% 비용 절감, 운영비 최적화</div>
                         </div>
-                        <div class="billing-item">
-                            <div class="billing-type">교육 지원비</div>
-                            <div class="billing-price">연간 1억원 (학습자 지원, 행사, 평가)</div>
+                        <div class="roi-item">
+                            <div class="roi-metric">확장성 이점</div>
+                            <div class="roi-value">문서량 증가시에도 선형적 비용 증가</div>
                         </div>
-                        <div class="billing-item">
-                            <div class="billing-type">총 사업비</div>
-                            <div class="billing-price">3년간 총 14억원 (국비 70%, 지방비 30%)</div>
-                        </div>
-                    </div>
-
-                    <div class="db-structure">
-                        <div class="endpoint-group-title" style="color: #059669; margin-bottom: 6px;">📊 학습 관리 시스템</div>
-                        <div class="db-table">
-                            <div class="table-name">학습자 관리</div>
-                            <div class="table-field">개인정보: <span class="field-type">암호화 저장</span></div>
-                            <div class="table-field">학습수준: <span class="field-type">초급/중급/고급</span></div>
-                            <div class="table-field">진도율: <span class="field-type">실시간 추적</span></div>
-                            <div class="table-field">성취도: <span class="field-type">평가 점수</span></div>
-                        </div>
-                        <div class="db-table">
-                            <div class="table-name">교육 콘텐츠</div>
-                            <div class="table-field">언어별: <span class="field-type">한국어, 영어, 중국어 등</span></div>
-                            <div class="table-field">난이도별: <span class="field-type">10단계 세분화</span></div>
-                            <div class="table-field">주제별: <span class="field-type">생활, 직장, 문화 등</span></div>
-                            <div class="table-field">업데이트: <span class="field-type">월 1회 신규 콘텐츠</span></div>
-                        </div>
-                        <div class="db-table">
-                            <div class="table-name">성과 분석</div>
-                            <div class="table-field">학습통계: <span class="field-type">일/주/월별 리포트</span></div>
-                            <div class="table-field">완주율: <span class="field-type">과정별 수료 현황</span></div>
-                            <div class="table-field">만족도: <span class="field-type">설문조사 데이터</span></div>
-                            <div class="table-field">정책연계: <span class="field-type">교육청 보고서</span></div>
-                        </div>
-                    </div>
-
-                    <div class="storage-structure">
-                        <div class="endpoint-group-title" style="color: #7c3aed; margin-bottom: 6px;">🏛️ 교육청 연계 방안</div>
-                        <div class="storage-path">
-                            <span class="path-level">정책 연계:</span> 다문화 가족 지원 정책과 연동
-                        </div>
-                        <div class="storage-path">
-                            ├── <span class="path-level">다문화 교육센터</span> 오프라인 교육 병행
-                        </div>
-                        <div class="storage-path">
-                            │   ├── <span class="path-level">학교 연계</span> 자녀 교육 지원 프로그램
-                        </div>
-                        <div class="storage-path">
-                            │   ├── <span class="path-level">취업센터</span> 직업교육 연계 서비스
-                        </div>
-                        <div class="storage-path">
-                            │   └── <span class="path-level">복지관</span> 지역사회 프로그램 연동
-                        </div>
-                        <div class="storage-path">
-                            <span class="path-level">성과 관리:</span> 교육청 정책 성과 측정
-                        </div>
-                        <div class="storage-path">
-                            ├── <span class="path-level">월별 보고서</span> 학습 현황 및 성과
-                        </div>
-                        <div class="storage-path">
-                            │   ├── 참여자 현황 (신규/지속/완료)
-                        </div>
-                        <div class="storage-path">
-                            │   ├── 학습 성취도 (레벨별 분포)
-                        </div>
-                        <div class="storage-path">
-                            │   └── 만족도 조사 (5점 척도)
-                        </div>
-                        <div class="storage-path">
-                            <span class="path-level">확산 계획:</span> 타 지역 벤치마킹 모델
-                        </div>
-                        <div class="storage-path">
-                            └── <span class="path-level">전국 확산</span> 표준 모델 개발 및 보급
-                        </div>
-                        <div class="storage-path">
-                            <span class="path-level">기대효과:</span> 다문화 사회통합 선도 지역
+                        <div class="roi-item">
+                            <div class="roi-metric">혁신 가속화</div>
+                            <div class="roi-value">신제품 개발 주기 40% 단축, R&D 효율성 증대</div>
                         </div>
                     </div>
                 </div>
@@ -543,11 +424,11 @@
             <!-- 하단 정보 -->
             <div class="bottom-info">
                 <div class="company-info">
-    
+                    알파브라더스 × RAGFlow 엔터프라이즈 솔루션
                 </div>
                 <div class="page-info">
-                    Page 9 of 10<br>
-                    다문화 부모 AI 다국어 교육 시스템
+                    Page 9 of 11<br>
+                    RAGFlow 비즈니스 모델
                 </div>
             </div>
         </div>

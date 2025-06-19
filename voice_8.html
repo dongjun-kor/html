@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다문화 가정 AI 다국어 교육 시스템</title>
+    <title>RAGFlow 기술 스택 및 통합 시스템</title>
     
     <!-- SUIT 폰트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
@@ -96,10 +96,10 @@
             margin-right: 10px;
         }
 
-        .layer-user { grid-column: 1; grid-row: 1; }
-        .layer-frontend { grid-column: 1; grid-row: 2; }
-        .layer-backend { grid-column: 1; grid-row: 3; }
-        .layer-ai { grid-column: 1; grid-row: 4; }
+        .layer-ui { grid-column: 1; grid-row: 1; }
+        .layer-api { grid-column: 1; grid-row: 2; }
+        .layer-core { grid-column: 1; grid-row: 3; }
+        .layer-data { grid-column: 1; grid-row: 4; }
 
         /* 플로우 노드 */
         .flow-node {
@@ -150,32 +150,32 @@
         }
 
         /* 색상 테마 */
-        .user-node {
+        .ui-node {
             background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
             border-color: #6366f1;
         }
 
-        .frontend-node {
+        .api-node {
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
             border-color: #3b82f6;
         }
 
-        .backend-node {
+        .core-node {
             background: linear-gradient(135deg, #d1fae5, #a7f3d0);
             border-color: #10b981;
         }
 
-        .ai-node {
+        .data-node {
             background: linear-gradient(135deg, #fce7f3, #fbcfe8);
             border-color: #ec4899;
         }
 
-        .database-node {
+        .storage-node {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             border-color: #f59e0b;
         }
 
-        .payment-node {
+        .security-node {
             background: linear-gradient(135deg, #fee2e2, #fecaca);
             border-color: #ef4444;
         }
@@ -236,159 +236,159 @@
 <body>
     <div class="presentation-container">
         <div class="slide">
-            <h1 class="page-title">다문화 가정 AI 언어 교육 시스템 - 기술 아키텍처 요약</h1>
-            <div class="subtitle">다국어 학습 플랫폼의 데이터 흐름 및 AI 컴포넌트 구조</div>
+            <h1 class="page-title">RAGFlow 기술 스택 및 통합 시스템</h1>
+            <div class="subtitle">엔터프라이즈급 RAG 시스템의 완전한 기술 아키텍처와 각 레이어별 구성 요소</div>
             
             <div class="flow-layout">
                 <div class="flow-container">
                     <!-- 레이어 라벨 -->
-                    <div class="layer-label layer-user">학습자 영역</div>
-                    <div class="layer-label layer-frontend">학습 인터페이스</div>
-                    <div class="layer-label layer-backend">교육 엔진</div>
-                    <div class="layer-label layer-ai">AI 모델</div>
+                    <div class="layer-label layer-ui">사용자 인터페이스</div>
+                    <div class="layer-label layer-api">API 및 게이트웨이</div>
+                    <div class="layer-label layer-core">핵심 엔진</div>
+                    <div class="layer-label layer-data">데이터 레이어</div>
 
-                    <!-- 학습자 영역 (Row 1) -->
-                    <div class="flow-node user-node pos-2-1">
-                        <div class="node-icon">👩‍🎓</div>
-                        <div class="node-title">학습자 입력</div>
-                        <div class="node-desc">음성/텍스트 학습</div>
-                        <div class="node-tech">음성 인식, 텍스트 입력</div>
+                    <!-- 사용자 인터페이스 (Row 1) -->
+                    <div class="flow-node ui-node pos-2-1">
+                        <div class="node-icon">🖥️</div>
+                        <div class="node-title">웹 인터페이스</div>
+                        <div class="node-desc">React 기반 UI</div>
+                        <div class="node-tech">Modern Web App</div>
                     </div>
 
-                    <div class="flow-node user-node pos-3-1">
+                    <div class="flow-node ui-node pos-3-1">
                         <div class="node-icon">📱</div>
-                        <div class="node-title">모바일 학습 앱</div>
-                        <div class="node-desc">React Native UI</div>
-                        <div class="node-tech">크로스 플랫폼</div>
+                        <div class="node-title">모바일 앱</div>
+                        <div class="node-desc">React Native</div>
+                        <div class="node-tech">iOS / Android</div>
                     </div>
 
-                    <div class="flow-node user-node pos-4-1">
-                        <div class="node-icon">🔐</div>
-                        <div class="node-title">학습자 인증</div>
-                        <div class="node-desc">개인별 학습 관리</div>
-                        <div class="node-tech">Supabase Auth, JWT</div>
+                    <div class="flow-node ui-node pos-4-1">
+                        <div class="node-icon">🎛️</div>
+                        <div class="node-title">관리 대시보드</div>
+                        <div class="node-desc">시스템 모니터링</div>
+                        <div class="node-tech">Admin Panel</div>
                     </div>
 
-                    <div class="flow-node user-node pos-5-1">
-                        <div class="node-icon">🌍</div>
-                        <div class="node-title">언어 선택</div>
-                        <div class="node-desc">10개국 언어 트랙</div>
-                        <div class="node-tech">다국어 라우팅</div>
+                    <div class="flow-node ui-node pos-5-1">
+                        <div class="node-icon">🔌</div>
+                        <div class="node-title">SDK 라이브러리</div>
+                        <div class="node-desc">개발자 도구</div>
+                        <div class="node-tech">Python, JS SDK</div>
                     </div>
 
-                    <div class="flow-node user-node pos-6-1">
-                        <div class="node-icon">📚</div>
-                        <div class="node-title">학습 세션 시작</div>
-                        <div class="node-desc">AI 튜터와 상호작용</div>
-                        <div class="node-tech">WebSocket 연결</div>
-                    </div>
-
-                    <!-- 학습 인터페이스 (Row 2) -->
-                    <div class="flow-node frontend-node pos-2-2">
-                        <div class="node-icon">🎤</div>
-                        <div class="node-title">발음 평가</div>
-                        <div class="node-desc">실시간 발음 분석</div>
-                        <div class="node-tech">STT + AI 평가</div>
-                    </div>
-
-                    <div class="flow-node frontend-node pos-3-2">
+                    <div class="flow-node ui-node pos-6-1">
                         <div class="node-icon">📊</div>
-                        <div class="node-title">진도 추적</div>
-                        <div class="node-desc">학습 성과 모니터링</div>
-                        <div class="node-tech">Progress API</div>
+                        <div class="node-title">분석 대시보드</div>
+                        <div class="node-desc">사용량 분석</div>
+                        <div class="node-tech">Analytics UI</div>
                     </div>
 
-                    <div class="flow-node frontend-node pos-4-2">
+                    <!-- API 및 게이트웨이 (Row 2) -->
+                    <div class="flow-node api-node pos-2-2">
+                        <div class="node-icon">🚪</div>
+                        <div class="node-title">API 게이트웨이</div>
+                        <div class="node-desc">트래픽 라우팅</div>
+                        <div class="node-tech">Kong, NGINX</div>
+                    </div>
+
+                    <div class="flow-node api-node pos-3-2">
+                        <div class="node-icon">🔑</div>
+                        <div class="node-title">인증 서비스</div>
+                        <div class="node-desc">OAuth2, JWT</div>
+                        <div class="node-tech">Auth0, Keycloak</div>
+                    </div>
+
+                    <div class="flow-node api-node pos-4-2">
+                        <div class="node-icon">📡</div>
+                        <div class="node-title">REST API</div>
+                        <div class="node-desc">시스템 연동</div>
+                        <div class="node-tech">FastAPI, Flask</div>
+                    </div>
+
+                    <div class="flow-node api-node pos-5-2">
                         <div class="node-icon">⚡</div>
-                        <div class="node-title">실시간 피드백</div>
-                        <div class="node-desc">즉시 교정 및 안내</div>
-                        <div class="node-tech">WebSocket 양방향</div>
+                        <div class="node-title">WebSocket</div>
+                        <div class="node-desc">실시간 통신</div>
+                        <div class="node-tech">Socket.IO</div>
                     </div>
 
-                    <div class="flow-node frontend-node pos-5-2">
-                        <div class="node-icon">🔊</div>
-                        <div class="node-title">음성 가이드</div>
-                        <div class="node-desc">원어민 수준 발음</div>
-                        <div class="node-tech">TTS 시스템</div>
+                    <div class="flow-node security-node pos-6-2">
+                        <div class="node-icon">🛡️</div>
+                        <div class="node-title">보안 미들웨어</div>
+                        <div class="node-desc">암호화, 방화벽</div>
+                        <div class="node-tech">Security Layer</div>
                     </div>
 
-                    <div class="flow-node payment-node pos-6-2">
-                        <div class="node-icon">🏆</div>
-                        <div class="node-title">성취도 평가</div>
-                        <div class="node-desc">레벨 테스트 및 인증</div>
-                        <div class="node-tech">평가 알고리즘</div>
-                    </div>
-
-                    <!-- 교육 엔진 (Row 3) -->
-                    <div class="flow-node backend-node pos-2-3">
-                        <div class="node-icon">⚙️</div>
-                        <div class="node-title">교육 API</div>
-                        <div class="node-desc">학습 로직 처리</div>
-                        <div class="node-tech">FastAPI, 교육 엔진</div>
-                    </div>
-
-                    <div class="flow-node database-node pos-3-3">
-                        <div class="node-icon">🗄️</div>
-                        <div class="node-title">학습 데이터베이스</div>
-                        <div class="node-desc">개인별 학습 기록</div>
-                        <div class="node-tech">PostgreSQL, 진도 관리</div>
-                    </div>
-
-                    <div class="flow-node backend-node pos-4-3">
-                        <div class="node-icon">🎯</div>
-                        <div class="node-title">맞춤형 추천</div>
-                        <div class="node-desc">개인별 커리큘럼</div>
-                        <div class="node-tech">추천 알고리즘</div>
-                    </div>
-
-                    <div class="flow-node database-node pos-5-3">
-                        <div class="node-icon">📈</div>
-                        <div class="node-title">학습 분석</div>
-                        <div class="node-desc">성과 데이터 분석</div>
-                        <div class="node-tech">Analytics Engine</div>
-                    </div>
-
-                    <div class="flow-node backend-node pos-6-3">
-                        <div class="node-icon">🔗</div>
-                        <div class="node-title">외부 API 연동</div>
-                        <div class="node-desc">TOPIK, HSK 등</div>
-                        <div class="node-tech">공인시험 연계</div>
-                    </div>
-
-                    <!-- AI 모델 (Row 4) -->
-                    <div class="flow-node ai-node pos-2-4">
+                    <!-- 핵심 엔진 (Row 3) -->
+                    <div class="flow-node core-node pos-2-3">
                         <div class="node-icon">🧠</div>
-                        <div class="node-title">다국어 NLP</div>
-                        <div class="node-desc">언어 이해 및 생성</div>
-                        <div class="node-tech">Transformers, BERT</div>
+                        <div class="node-title">RAG 엔진</div>
+                        <div class="node-desc">검색 증강 생성</div>
+                        <div class="node-tech">RAGFlow Core</div>
                     </div>
 
-                    <div class="flow-node ai-node pos-3-4">
-                        <div class="node-icon">🗣️</div>
-                        <div class="node-title">음성 인식 AI</div>
-                        <div class="node-desc">다국어 STT</div>
-                        <div class="node-tech">Whisper, 발음 평가</div>
+                    <div class="flow-node core-node pos-3-3">
+                        <div class="node-icon">🔍</div>
+                        <div class="node-title">DeepDoc 엔진</div>
+                        <div class="node-desc">문서 분석 AI</div>
+                        <div class="node-tech">Layout Analysis</div>
                     </div>
 
-                    <div class="flow-node ai-node pos-4-4">
-                        <div class="node-icon">🎙️</div>
-                        <div class="node-title">음성 합성 AI</div>
-                        <div class="node-desc">다국어 TTS</div>
-                        <div class="node-tech">ElevenLabs, Azure</div>
+                    <div class="flow-node core-node pos-4-3">
+                        <div class="node-icon">🔍</div>
+                        <div class="node-title">검색 엔진</div>
+                        <div class="node-desc">벡터 유사도 검색</div>
+                        <div class="node-tech">Semantic Search</div>
                     </div>
 
-                    <div class="flow-node ai-node pos-5-4">
+                    <div class="flow-node core-node pos-5-3">
                         <div class="node-icon">🤖</div>
-                        <div class="node-title">AI 튜터</div>
-                        <div class="node-desc">대화형 언어 교육</div>
-                        <div class="node-tech">GPT-4, Claude</div>
+                        <div class="node-title">LLM 통합</div>
+                        <div class="node-desc">GPT-4, Claude</div>
+                        <div class="node-tech">Multi-LLM Support</div>
                     </div>
 
-                    <div class="flow-node database-node pos-6-4">
-                        <div class="node-icon">📝</div>
-                        <div class="node-title">언어 콘텐츠</div>
-                        <div class="node-desc">10개국 교육 자료</div>
-                        <div class="node-tech">다국어 콘텐츠 DB</div>
+                    <div class="flow-node core-node pos-6-3">
+                        <div class="node-icon">🌍</div>
+                        <div class="node-title">다국어 처리</div>
+                        <div class="node-desc">언어간 쿼리</div>
+                        <div class="node-tech">Cross-lingual</div>
+                    </div>
+
+                    <!-- 데이터 레이어 (Row 4) -->
+                    <div class="flow-node data-node pos-2-4">
+                        <div class="node-icon">🗄️</div>
+                        <div class="node-title">벡터 DB</div>
+                        <div class="node-desc">임베딩 저장</div>
+                        <div class="node-tech">Milvus, Weaviate</div>
+                    </div>
+
+                    <div class="flow-node storage-node pos-3-4">
+                        <div class="node-icon">📁</div>
+                        <div class="node-title">문서 저장소</div>
+                        <div class="node-desc">원본 파일 관리</div>
+                        <div class="node-tech">S3, MinIO</div>
+                    </div>
+
+                    <div class="flow-node data-node pos-4-4">
+                        <div class="node-icon">🐘</div>
+                        <div class="node-title">관계형 DB</div>
+                        <div class="node-desc">메타데이터</div>
+                        <div class="node-tech">PostgreSQL</div>
+                    </div>
+
+                    <div class="flow-node storage-node pos-5-4">
+                        <div class="node-icon">⚡</div>
+                        <div class="node-title">캐시 시스템</div>
+                        <div class="node-desc">성능 최적화</div>
+                        <div class="node-tech">Redis, Memcached</div>
+                    </div>
+
+                    <div class="flow-node storage-node pos-6-4">
+                        <div class="node-icon">🔍</div>
+                        <div class="node-title">로그 및 모니터링</div>
+                        <div class="node-desc">시스템 추적</div>
+                        <div class="node-tech">ELK Stack</div>
                     </div>
                 </div>
             </div>
@@ -396,11 +396,11 @@
             <!-- 하단 정보 -->
             <div class="bottom-info">
                 <div class="company-info">
-    
+                    알파브라더스 × RAGFlow 엔터프라이즈 솔루션
                 </div>
                 <div class="page-info">
-                    Page 8 of 10<br>
-                    다문화 부모 AI 다국어 교육 시스템
+                    Page 8 of 11<br>
+                    RAGFlow 기술 스택
                 </div>
             </div>
         </div>
