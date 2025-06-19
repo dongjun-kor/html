@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAGFlow 시스템 아키텍처 및 구조</title>
+    <title>RAGFlow 시스템 아키텍처 및 구성 요소</title>
     
     <!-- SUIT 폰트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
@@ -40,362 +40,222 @@
             width: 100%;
             height: 100%;
             position: relative;
-            padding: 15px 20px 10px 20px;
+            padding: 12px 18px 8px 18px;
             color: white;
             display: flex;
             flex-direction: column;
         }
 
         .page-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-align: center;
             letter-spacing: -0.02em;
         }
 
         .subtitle {
-            font-size: 11px;
+            font-size: 10px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             opacity: 0.9;
         }
 
-        .flow-layout {
+        .architecture-layout {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 8px;
             padding: 12px;
             color: #1e293b;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            height: 480px;
+            height: 540px;
             overflow: hidden;
-            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
-        .flowchart-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 플로우 노드 기본 스타일 */
-        .flow-node {
-            position: absolute;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 5px 7px;
-            text-align: center;
-            font-size: 8px;
-            font-weight: 600;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .section {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            gap: 6px;
         }
 
-        .flow-node:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .node-title {
+        .section-header {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 11px;
             font-weight: 700;
-            margin-bottom: 2px;
-            line-height: 1.1;
-            font-size: 10px;
+            margin-bottom: 4px;
         }
 
-        .node-desc {
+        .component-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .component-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .component-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .component-icon {
+            font-size: 16px;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .component-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            font-size: 9px;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .component-desc {
             font-size: 7px;
+            color: #64748b;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .component-tech {
+            font-size: 6px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 2px 4px;
+            border-radius: 4px;
+            margin-top: auto;
+        }
+
+        /* 색상 테마 */
+        .input-layer {
+            border-color: #10b981;
+        }
+
+        .input-layer .component-tech {
+            background: #10b981;
+        }
+
+        .processing-layer {
+            border-color: #f59e0b;
+        }
+
+        .processing-layer .component-tech {
+            background: #f59e0b;
+        }
+
+        .storage-layer {
+            border-color: #8b5cf6;
+        }
+
+        .storage-layer .component-tech {
+            background: #8b5cf6;
+        }
+
+        .output-layer {
+            border-color: #3b82f6;
+        }
+
+        .output-layer .component-tech {
+            background: #3b82f6;
+        }
+
+        .core-engine {
+            border-color: #ef4444;
+        }
+
+        .core-engine .component-tech {
+            background: #ef4444;
+        }
+
+        .integration-layer {
+            border-color: #06b6d4;
+        }
+
+        .integration-layer .component-tech {
+            background: #06b6d4;
+        }
+
+        /* 플로우 섹션 */
+        .flow-section {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 8px;
+            border-left: 4px solid #2563eb;
+            margin-top: 8px;
+        }
+
+        .flow-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 6px;
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .flow-step {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px 6px;
+            font-size: 7px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-number {
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text {
             color: #1e293b;
             line-height: 1.2;
-            margin-bottom: 1px;
-        }
-
-        .node-tech {
-            font-size: 6px;
-            color: white;
-            font-weight: 600;
-        }
-
-        /* 1. 시작점 */
-        .start-node {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border-color: #059669;
-            width: 102px;
-            height: 42px;
-            top: 5px;
-            left: 444px;
-        }
-
-        /* 2. 사용자 분기 */
-        .user-branch {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            border-color: #2563eb;
-            width: 84px;
-            height: 42px;
-        }
-
-        .streamer-branch {
-            top: 60px;
-            left: 363px;
-        }
-
-        .viewer-branch {
-            top: 60px;
-            left: 523px;
-        }
-
-        /* 3. DB 아키텍처 */
-        .db-cluster {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            border-color: #d97706;
-            width: 144px;
-            height: 54px;
-            top: 120px;
-            left: 423px;
-        }
-
-        .db-detail {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
-            border-color: #f59e0b;
-            width: 78px;
-            height: 48px;
-        }
-
-        .user-db {
-            top: 120px;
-            left: 303px;
-        }
-
-        .voice-db {
-            top: 120px;
-            left: 603px;
-        }
-
-        .chat-db {
-            top: 120px;
-            left: 703px;
-        }
-
-        /* 4. 시스템 레이어 */
-        .system-layer {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-            border-color: #7c3aed;
-            width: 102px;
-            height: 54px;
-        }
-
-        .frontend-layer {
-            top: 190px;
-            left: 323px;
-        }
-
-        .backend-layer {
-            top: 190px;
-            left: 563px;
-        }
-
-        /* 5. 컨텐츠 분기 */
-        .content-branch {
-            background: linear-gradient(135deg, #ec4899, #db2777);
-            color: white;
-            border-color: #db2777;
-            width: 90px;
-            height: 48px;
-        }
-
-        .normal-track {
-            top: 260px;
-            left: 323px;
-        }
-
-        .adult-track {
-            top: 260px;
-            left: 563px;
-        }
-
-        /* 6. 처리 단계 */
-        .process-step {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            color: white;
-            border-color: #0891b2;
-            width: 78px;
-            height: 54px;
-        }
-
-        .user-input {
-            top: 320px;
-            left: 163px;
-        }
-
-        .stt-process {
-            top: 320px;
-            left: 263px;
-        }
-
-        .api-request {
-            top: 320px;
-            left: 456px;
-        }
-
-        .tts-process {
-            top: 320px;
-            left: 649px;
-        }
-
-        .realtime-process {
-            top: 320px;
-            left: 749px;
-        }
-
-        /* 7. AI 모델 옵션 */
-        .ai-option {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            color: white;
-            border-color: #ea580c;
-            width: 84px;
-            height: 60px;
-        }
-
-        .elevenlabs-option {
-            top: 395px;
-            left: 223px;
-        }
-
-        .junos-option {
-            top: 395px;
-            left: 323px;
-        }
-
-        .opensource-option {
-            top: 395px;
-            left: 423px;
-        }
-
-        .adult-ai1 {
-            top: 395px;
-            left: 533px;
-        }
-
-        .adult-ai2 {
-            top: 395px;
-            left: 633px;
-        }
-
-        .adult-ai3 {
-            top: 395px;
-            left: 733px;
-        }
-
-        /* 화살표 스타일 */
-        .arrow {
-            position: absolute;
-            z-index: 5;
-        }
-
-        .arrow-down {
-            width: 2px;
-            background: #64748b;
-        }
-
-        .arrow-down::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-top: 6px solid #64748b;
-            border-left: 3px solid transparent;
-            border-right: 3px solid transparent;
-        }
-
-        .arrow-right {
-            height: 2px;
-            background: #64748b;
-        }
-
-        .arrow-right::after {
-            content: '';
-            position: absolute;
-            right: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 6px solid #64748b;
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-        }
-
-        .arrow-diagonal {
-            background: #64748b;
-            transform-origin: left center;
-        }
-
-        .arrow-diagonal::after {
-            content: '';
-            position: absolute;
-            right: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 6px solid #64748b;
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-        }
-
-        /* 직선 */
-        .line {
-            position: absolute;
-            z-index: 5;
-            height: 2px;
-            background: #64748b;
-        }
-
-        /* 라벨 */
-        .step-label {
-            position: absolute;
-            font-size: 7px;
-            font-weight: 600;
-            color: #374151;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2px 4px;
-            border-radius: 3px;
-            border: 1px solid #e5e7eb;
-            z-index: 10;
-        }
-
-        /* 연결선 설명 */
-        .connection-desc {
-            position: absolute;
-            font-size: 6px;
-            color: #6b7280;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1px 3px;
-            border-radius: 2px;
-            font-weight: 500;
         }
 
         /* 하단 정보 */
         .bottom-info {
             position: absolute;
-            bottom: 10px;
-            left: 20px;
-            right: 20px;
+            bottom: 8px;
+            left: 18px;
+            right: 18px;
             display: flex;
             justify-content: space-between;
             align-items: end;
@@ -403,7 +263,7 @@
         }
 
         .company-info {
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 600;
             opacity: 0.8;
             color: white;
@@ -411,7 +271,7 @@
 
         .page-info {
             text-align: right;
-            font-size: 7px;
+            font-size: 6px;
             opacity: 0.7;
             line-height: 1.3;
             color: white;
@@ -421,205 +281,167 @@
 <body>
     <div class="presentation-container">
         <div class="slide">
-            <h1 class="page-title">RAGFlow 시스템 아키텍처 및 구조</h1>
-            <div class="subtitle">LLM과 결합된 검색 증강 생성(RAG) 시스템의 엔터프라이즈급 아키텍처</div>
+            <h1 class="page-title">RAGFlow 시스템 아키텍처 및 구성 요소</h1>
+            <div class="subtitle">엔터프라이즈 RAG 시스템의 핵심 구성 요소와 데이터 처리 흐름</div>
             
-            <div class="flow-layout">
-                <div class="flowchart-container">
+            <div class="architecture-layout">
+                <!-- 좌측: 핵심 구성 요소 -->
+                <div class="section">
+                    <div class="section-header">🏗️ 핵심 구성 요소</div>
                     
-                    <!-- 1. 시작점: 문서 입력 -->
-                    <div class="flow-node start-node">
-                        <div class="node-title">문서 업로드</div>
-                        <div class="node-desc">PDF, DOCX, 이미지</div>
-                        <div class="node-tech">멀티모달 입력</div>
+                    <div class="component-grid">
+                        <!-- 입력 레이어 -->
+                        <div class="component-card input-layer">
+                            <div class="component-icon">📄</div>
+                            <div class="component-title">문서 입력 시스템</div>
+                            <div class="component-desc">PDF, DOCX, 이미지<br>멀티모달 입력 지원</div>
+                            <div class="component-tech">Document Ingestion</div>
+                        </div>
+
+                        <div class="component-card processing-layer">
+                            <div class="component-icon">🧠</div>
+                            <div class="component-title">DeepDoc 엔진</div>
+                            <div class="component-desc">문서 레이아웃 분석<br>구조적 정보 추출</div>
+                            <div class="component-tech">Layout Analysis</div>
+                        </div>
+
+                        <!-- 처리 레이어 -->
+                        <div class="component-card core-engine">
+                            <div class="component-icon">🔍</div>
+                            <div class="component-title">RAG 엔진</div>
+                            <div class="component-desc">검색 증강 생성<br>LLM 통합 처리</div>
+                            <div class="component-tech">RAG Core</div>
+                        </div>
+
+                        <div class="component-card integration-layer">
+                            <div class="component-icon">⚡</div>
+                            <div class="component-title">벡터 검색</div>
+                            <div class="component-desc">임베딩 생성 및<br>유사도 기반 검색</div>
+                            <div class="component-tech">Vector Search</div>
+                        </div>
+
+                        <!-- 저장 레이어 -->
+                        <div class="component-card storage-layer">
+                            <div class="component-icon">🗄️</div>
+                            <div class="component-title">벡터 데이터베이스</div>
+                            <div class="component-desc">Milvus/Weaviate<br>고성능 벡터 저장</div>
+                            <div class="component-tech">Vector DB</div>
+                        </div>
+
+                        <div class="component-card storage-layer">
+                            <div class="component-icon">📊</div>
+                            <div class="component-title">메타데이터 DB</div>
+                            <div class="component-desc">PostgreSQL<br>문서 정보 관리</div>
+                            <div class="component-tech">Metadata Store</div>
+                        </div>
+
+                        <!-- 출력 레이어 -->
+                        <div class="component-card output-layer">
+                            <div class="component-icon">💬</div>
+                            <div class="component-title">대화형 인터페이스</div>
+                            <div class="component-desc">React/Vue.js<br>사용자 친화적 UI</div>
+                            <div class="component-tech">Web Interface</div>
+                        </div>
+
+                        <div class="component-card output-layer">
+                            <div class="component-icon">🔌</div>
+                            <div class="component-title">API 게이트웨이</div>
+                            <div class="component-desc">REST/GraphQL<br>외부 시스템 연동</div>
+                            <div class="component-tech">API Gateway</div>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- 2. 문서 유형별 분기 -->
-                    <div class="flow-node user-branch streamer-branch">
-                        <div class="node-title">구조화 문서</div>
-                        <div class="node-desc">표, 차트 포함</div>
-                        <div class="node-tech">레이아웃 분석</div>
-                    </div>
-
-                    <div class="flow-node user-branch viewer-branch">
-                        <div class="node-title">일반 문서</div>
-                        <div class="node-desc">텍스트 중심</div>
-                        <div class="node-tech">기본 처리</div>
-                    </div>
-
-                    <!-- 3. 데이터 처리 레이어 -->
-                    <div class="flow-node db-cluster">
-                        <div class="node-title">DeepDoc 엔진</div>
-                        <div class="node-desc">문서 레이아웃 분석<br>콘텐츠 구조 이해</div>
-                        <div class="node-tech">AI 기반 파싱</div>
-                    </div>
-
-                    <div class="flow-node db-detail user-db">
-                        <div class="node-title">벡터 DB</div>
-                        <div class="node-desc">임베딩 저장<br>유사도 검색</div>
-                        <div class="node-tech">Milvus/Chroma</div>
-                    </div>
-
-                    <div class="flow-node db-detail voice-db">
-                        <div class="node-title">지식 그래프 DB</div>
-                        <div class="node-desc">엔티티 관계<br>구조적 정보</div>
-                        <div class="node-tech">Neo4j/GraphDB</div>
-                    </div>
-
-                    <div class="flow-node db-detail chat-db">
-                        <div class="node-title">메타데이터 DB</div>
-                        <div class="node-desc">문서 정보<br>접근 권한</div>
-                        <div class="node-tech">PostgreSQL</div>
-                    </div>
-
-                    <!-- 4. 시스템 레이어 -->
-                    <div class="flow-node system-layer frontend-layer">
-                        <div class="node-title">웹 인터페이스</div>
-                        <div class="node-desc">React/Vue.js<br>사용자 대화형 UI</div>
-                        <div class="node-tech">반응형 웹앱</div>
-                    </div>
-
-                    <div class="flow-node system-layer backend-layer">
-                        <div class="node-title">RAG 엔진</div>
-                        <div class="node-desc">FastAPI<br>검색 증강 생성</div>
-                        <div class="node-tech">LLM 통합</div>
-                    </div>
-
-                    <!-- 5. 언어별 분기 -->
-                    <div class="flow-node content-branch normal-track">
-                        <div class="node-title">한국어 처리</div>
-                        <div class="node-desc">한글 토크나이징</div>
-                        <div class="node-tech">KoBERT 기반</div>
-                    </div>
-
-                    <div class="flow-node content-branch adult-track">
-                        <div class="node-title">다국어 처리</div>
-                        <div class="node-desc">언어 간 쿼리</div>
-                        <div class="node-tech">mBERT/XLM-R</div>
-                    </div>
-
-                    <!-- 6. 학습 처리 단계 -->
-                    <div class="flow-node process-step user-input">
-                        <div class="node-title">학습 입력</div>
-                        <div class="node-desc">음성/텍스트</div>
-                        <div class="node-tech">멀티모달</div>
-                    </div>
-
-                    <div class="flow-node process-step stt-process">
-                        <div class="node-title">발음 평가</div>
-                        <div class="node-desc">음성 분석</div>
-                        <div class="node-tech">AI 평가</div>
-                    </div>
-
-                    <div class="flow-node process-step api-request">
-                        <div class="node-title">AI 튜터링</div>
-                        <div class="node-desc">맞춤 피드백</div>
-                        <div class="node-tech">개인화 교육</div>
-                    </div>
-
-                    <div class="flow-node process-step tts-process">
-                        <div class="node-title">음성 가이드</div>
-                        <div class="node-desc">발음 교정</div>
-                        <div class="node-tech">원어민 수준</div>
-                    </div>
-
-                    <div class="flow-node process-step realtime-process">
-                        <div class="node-title">진도 업데이트</div>
-                        <div class="node-desc">실시간 반영</div>
-                        <div class="node-tech">동기화</div>
-                    </div>
-
-                    <!-- 7. AI 교육 모델 옵션 -->
-                    <div class="flow-node ai-option elevenlabs-option">
-                        <div class="node-title">한국어 특화<br>AI 모델</div>
-                        <div class="node-desc">한국어 학습<br>최적화</div>
-                        <div class="node-tech">TOPIK 대비</div>
-                    </div>
-
-                    <div class="flow-node ai-option junos-option">
-                        <div class="node-title">영어 교육<br>AI 모델</div>
-                        <div class="node-desc">비즈니스 영어<br>회화 중심</div>
-                        <div class="node-tech">취업 특화</div>
-                    </div>
-
-                    <div class="flow-node ai-option opensource-option">
-                        <div class="node-title">중국어 교육<br>AI 모델</div>
-                        <div class="node-desc">HSK 대비<br>실무 중국어</div>
-                        <div class="node-tech">비즈니스 활용</div>
-                    </div>
-
-                    <div class="flow-node ai-option adult-ai1">
-                        <div class="node-title">일본어<br>교육 모델</div>
-                        <div class="node-desc">JLPT 준비<br>관광/서비스업</div>
-                        <div class="node-tech">실용 중심</div>
-                    </div>
-
-                    <div class="flow-node ai-option adult-ai2">
-                        <div class="node-title">기타 언어<br>모델</div>
-                        <div class="node-desc">베트남어, 태국어<br>몽골어 등</div>
-                        <div class="node-tech">출신국 고려</div>
-                    </div>
-
-                    <div class="flow-node ai-option adult-ai3">
-                        <div class="node-title">문화 적응<br>모듈</div>
-                        <div class="node-desc">한국 문화 이해<br>사회생활 매너</div>
-                        <div class="node-tech">통합 교육</div>
-                    </div>
-
-                    <!-- 화살표들 -->
-                    <!-- 1단계: 시작점에서 분기로 (단방향) -->
-                    <div class="arrow arrow-down" style="left: 495px; top: 47px; height: 13px;"></div>
-
-                    <!-- 3단계: 학습 목적에서 통합 DB로 (단방향) -->
-                    <div class="arrow arrow-down" style="left: 405px; top: 102px; height: 18px;"></div>
-                    <div class="arrow arrow-down" style="left: 565px; top: 102px; height: 18px;"></div>
+                <!-- 우측: 데이터 처리 흐름 -->
+                <div class="section">
+                    <div class="section-header">🔄 데이터 처리 흐름</div>
                     
-                    <!-- DB 세부 연결 -->
-                    <div class="arrow arrow-right" style="left: 381px; top: 147px; width: 42px;"></div>
-                    <div class="arrow arrow-right" style="left: 567px; top: 147px; width: 36px;"></div>
-                    <div class="line" style="left: 681px; top: 144px; width: 22px;"></div>
+                    <div class="flow-section">
+                        <div class="flow-title">1️⃣ 문서 수집 및 전처리</div>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">문서 업로드 (PDF, DOCX, 이미지)</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">DeepDoc으로 레이아웃 분석</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">텍스트, 표, 이미지 추출</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 4단계: 통합 DB에서 시스템 레이어로 -->
-                    <div class="arrow arrow-diagonal" style="left: 495px; top: 174px; width: 70px; height: 2px; transform: rotate(15deg);"></div>
-                    <div class="line" style="left: 425px; top: 217px; width: 138px;"></div>
+                    <div class="flow-section">
+                        <div class="flow-title">2️⃣ 임베딩 및 인덱싱</div>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-text">의미 단위 청킹 (Semantic Chunking)</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">5</div>
+                                <div class="step-text">벡터 임베딩 생성 (OpenAI/HuggingFace)</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">6</div>
+                                <div class="step-text">벡터 DB에 저장 (Milvus/Weaviate)</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 5단계: 언어 트랙에서 학습 플로우로 -->
-                    <div class="arrow arrow-down" style="left: 368px; top: 298px; height: 22px;"></div>
-                    <div class="arrow arrow-down" style="left: 608px; top: 298px; height: 22px;"></div>
-                    
-                    <!-- 학습 처리 단계 연결 -->
-                    <div class="arrow arrow-right" style="left: 241px; top: 347px; width: 22px;"></div>
-                    <div class="arrow arrow-right" style="left: 341px; top: 347px; width: 115px;"></div>
-                    <div class="arrow arrow-right" style="left: 534px; top: 347px; width: 115px;"></div>
-                    <div class="arrow arrow-right" style="left: 727px; top: 347px; width: 22px;"></div>
+                    <div class="flow-section">
+                        <div class="flow-title">3️⃣ 질의 응답 처리</div>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">7</div>
+                                <div class="step-text">사용자 질문 임베딩 변환</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">8</div>
+                                <div class="step-text">유사도 기반 관련 문서 검색</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">9</div>
+                                <div class="step-text">LLM으로 맥락 기반 답변 생성</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">10</div>
+                                <div class="step-text">출처 정보와 함께 응답 제공</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 7단계: 처리 단계에서 AI 교육 모델로 -->
-                    <div class="arrow arrow-down" style="left: 495px; top: 374px; height: 15px;"></div>
-
-                    <!-- 단계 라벨들 -->
-                    <div class="step-label" style="left: 438px; top: 47px;">1. 학습 목적 분기</div>
-                    <div class="step-label" style="left: 428px; top: 107px;">2. 교육 DB 설계</div>
-                    <div class="step-label" style="left: 423px; top: 179px;">3. 시스템 구조</div>
-                    <div class="step-label" style="left: 433px; top: 239px;">4. 언어별 트랙</div>
-                    <div class="step-label" style="left: 418px; top: 303px;">5. 학습 처리 플로우</div>
-                    <div class="step-label" style="left: 148px; top: 380px;">6. AI 교육 모델 선택</div>
-
-                    <!-- 연결 설명 -->
-                    <div class="connection-desc" style="left: 378px; top: 152px;">학습 데이터 연동</div>
-                    <div class="connection-desc" style="left: 358px; top: 353px;">교육 데이터 플로우</div>
-                    <div class="connection-desc" style="left: 578px; top: 353px;">학습 진행 파이프라인</div>
-                    
+                    <div class="flow-section">
+                        <div class="flow-title">4️⃣ 고급 기능</div>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">🌍</div>
+                                <div class="step-text">다국어 지원: 언어 간 크로스 쿼리</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">🔒</div>
+                                <div class="step-text">권한 관리: 사용자별 접근 제어</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">📊</div>
+                                <div class="step-text">분석 도구: 사용 패턴 및 성능 모니터링</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 하단 정보 -->
             <div class="bottom-info">
                 <div class="company-info">
-    
+                    알파브라더스 × RAGFlow 엔터프라이즈 솔루션
                 </div>
                 <div class="page-info">
                     Page 4 of 11<br>
-                    RAGFlow 엔터프라이즈 문서 관리 시스템
+                    RAGFlow 시스템 아키텍처
                 </div>
             </div>
         </div>
